@@ -121,17 +121,16 @@ client.on("message", async message => {
 });
 
 ///
-client.on("guildMemberAdd", async member = 
-  let sayac = new Date('2020-01-01:00:00')//sayaç tarihi girin girdigini tarihden irtibaren geri sayar...
-let baslancaksey = ""//geri sayımın yapılacagı şeyi girin Örnek: <**Okulun**>başlamasına....... kaldı
-    let zaman = ms(sayac - Date.now())
-const tcembed = new Discord.RichEmbed() 
-.setColor("BLUE")
- .setDescription(` ${baslancaksey} başlamasına **${zaman.days}** gün **${zaman.hours}** saat **${zaman.minutes}** dakika kaldı!`)
-.setFooter("`Bot İsmi` | Sayaç")
-message.channel.send({tcembed});
+client.on("ready", async (guild, member) => { 
+let date = new Date('2019-05-05:00:00')
+let newdate = ms(date - Date.now())
 
+let kanal = "638750155574738956"
 
+client.setInterval(() => {
+  client.channels.get(kanal).setName(`Son ${newdate.days} gün, ${newdate.hours} saat, ${newdate.minutes} dakika kaldı!`)
+}, 3000);
+});
 
 
 
@@ -140,6 +139,7 @@ client.elevation = message => {
   if (!message.guild) {
     return;
   }
+  
   let permlvl = 0;
   if (message.member.hasPermission("KICK_MEMBERS")) permlvl = 1;
   if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
@@ -157,7 +157,6 @@ client.on("warn", e => {
 client.on("error", e => {
   console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
 });
-
 
 
 client.login(ayarlar.token)
