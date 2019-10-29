@@ -14,6 +14,9 @@ const Discord = require("discord.js");
 const { Client, Util } = require("discord.js");
 const client = new Discord.Client();
 const fs = require("fs");
+const ayarlar = require("./ayarlar.json");
+const { promisify } = require("util");
+const chalk = require("chalk");
 
 const log = message => {
   console.log(`${message}`);
@@ -87,4 +90,28 @@ client.unload = command => {
 
 
 
-client.login("NjM4NzUxMTIwNDI4MjM2ODM0.XbhRvw.g9OYAWojmoVTRu4I6mIxP4Al1aE")
+client.elevation = message => {
+  if (!message.guild) {
+    return;
+  }
+  let permlvl = 0;
+  if (message.member.hasPermission("KICK_MEMBERS")) permlvl = 1;
+  if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
+  if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;
+  if (message.author.id === ayarlar.sahip) permlvl = 4;
+  return permlvl;
+};
+
+var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
+
+client.on("warn", e => {
+  console.log(chalk.bgYellow(e.replace(regToken, "that was redacted")));
+});
+
+client.on("error", e => {
+  console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
+});
+
+
+
+client.login(ayarlar.token)
