@@ -3,6 +3,7 @@ dependencies:
   discord.js: 11.5.1
   express: 4.16.4
   fs: 0.0.2
+  http: 0.0.0
   moment: 2.24.0
   quick.db: 6.3.2
   util: 0.12.1
@@ -544,6 +545,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-ZTTX0MWrsQ2ZAhA1cejAwDLycFsd7I7nVtnkT3Ol0aqodaKW+0CTZDQ1uBv5whptCnc8e8HeRRJxRs0kmm/Qfw==
+  /http/0.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-huYybSnF0Dnen6xYSkVon5KfT3I=
   /iconv-lite/0.4.23:
     dependencies:
       safer-buffer: 2.1.2
@@ -1146,6 +1151,7 @@ specifiers:
   discord.js: ^11.5.1
   express: ^4.16.4
   fs: ^0.0.2
+  http: ^0.0.0
   moment: ^2.24.0
   quick.db: ^6.3.2
   util: ^0.12.1

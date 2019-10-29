@@ -9,6 +9,7 @@ http
   })
   .listen(8080);
 
+///////////////////////////////////////////////////////////////////////////////
 
 const Discord = require("discord.js");
 const { Client, Util } = require("discord.js");
@@ -17,6 +18,9 @@ const fs = require("fs");
 const ayarlar = require("./ayarlar.json");
 const { promisify } = require("util");
 const chalk = require("chalk");
+require('./util/eventLoader')(client);
+const moment = require('moment');
+const db = require("quick.db")
 
 const log = message => {
   console.log(`${message}`);
@@ -89,7 +93,39 @@ client.unload = command => {
 };
 
 
+//////////////////////////////////////////////////////////////////////////////
 
+client.on("message", async message => {
+  const a = message.content.toLowerCase();
+  if (
+    a === "slam" ||
+    a === "sa" ||
+    a === "selamun aleyküm" ||
+    a === "selamın aleyküm" ||
+    a === "selam" ||
+    a === "slm"
+  ) {
+    let i = await db.fetch(`saas_${message.guild.id}`);
+    if (i === "acik") {
+      const embed = new Discord.RichEmbed()
+        .setColor("BLACK")
+        .setTitle("Sa-As sistemi!")
+        .setDescription(
+          "**Aleyküm Selam, Hoşgeldin!**"
+        );
+
+      message.channel.send(embed);
+    }
+  }
+});
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
 client.elevation = message => {
   if (!message.guild) {
     return;

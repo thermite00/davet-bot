@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
     message.guild.members.get(args[0]);
 
   if (!rMember) {
-    return message.channel.sendEmbed(
+    return message.channel.send(
       new Discord.RichEmbed()
         .setDescription(
           `Lütfen bir kullanıcı giriniz!\nÖrnek: ${prefix}ad <@Kullanıcı> <YeniAd>`
@@ -27,6 +27,11 @@ module.exports.run = async (bot, message, args) => {
 
   let isim = args.slice(1).join(' ')
   rMember.setNickname(`${isim}`);
+  
+  const embed = new Discord.RichEmbed()
+  .setColor("BLACK")
+  .setDescription(`${rMember} adlı şahsın adı değiştirildi!`)
+  message.channel.send(embed)
 };
 
 exports.conf = {
