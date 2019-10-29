@@ -21,7 +21,7 @@ const chalk = require("chalk");
 require('./util/eventLoader')(client);
 const moment = require('moment');
 const db = require("quick.db")
-const ms = require('ms')
+const ms = require('parse-ms')
 
 const log = message => {
   console.log(`${message}`);
@@ -126,10 +126,26 @@ let date = new Date('2020-05-05:12:20')
 let newdate = ms(date - Date.now())
 
 let kanal = "638750155574738956"
+let kanal2 = "638813059040673802"
+let kanal3 = "638813077915172875"
+let kanal4 = "638813101399212062"
 
 client.setInterval(() => {
-  client.channels.get(kanal).setName(`${newdate}`)
-}, 3000);
+  client.channels.get(kanal).setName(`${newdate.days} gün!`)
+}, 1000);
+  
+  
+  client.setInterval(() => {
+  client.channels.get(kanal2).setName(`${newdate.hours} saat!`)
+}, 1000);
+  
+  client.setInterval(() => {
+  client.channels.get(kanal3).setName(`${newdate.minutes} dakika!`)
+}, 1000);
+  
+  client.setInterval(() => {
+  client.channels.get(kanal4).setName(`${newdate.seconds} saniye!`)
+}, 1000);
 });
 
 
