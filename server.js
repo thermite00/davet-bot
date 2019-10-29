@@ -1,22 +1,90 @@
-// server.js
-// where your node app starts
+const keep_alive = require("./keep_alive.js"); //index.js Const Kısımlarına
 
-// init project
-const express = require("express");
-const app = express();
+var http = require("http");
 
-// we've started you off with Express,
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+http
+  .createServer(function(req, res) {
+    res.write("Ehü Ehü");
+    res.end();
+  })
+  .listen(8080);
 
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static("public"));
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function(request, response) {
-  response.sendFile(__dirname + "/views/index.html");
+const Discord = require("discord.js");
+const { Client, Util } = require("discord.js");
+const client = new Discord.Client();
+const fs = require("fs");
+
+const log = message => {
+  console.log(`${message}`);
+};
+
+client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
+fs.readdir("./komutlar/", (err, files) => {
+  if (err) console.error(err);
+  log(`${files.length} komut yüklenecek.`);
+  files.forEach(f => {
+    let props = require(`./komutlar/${f}`);
+    log(`Komut - ${props.help.name}.`);
+    client.commands.set(props.help.name, props);
+    props.conf.aliases.forEach(alias => {
+      client.aliases.set(alias, props.help.name);
+    });
+  });
 });
 
-// listen for requests :)
-const listener = app.listen(process.env.PORT, function() {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+client.reload = command => {
+  return new Promise((resolve, reject) => {
+    try {
+      delete require.cache[require.resolve(`./komutlar/${command}`)];
+      let cmd = require(`./komutlar/${command}`);
+      client.commands.delete(command);
+      client.aliases.forEach((cmd, alias) => {
+        if (cmd === command) client.aliases.delete(alias);
+      });
+      client.commands.set(command, cmd);
+      cmd.conf.aliases.forEach(alias => {
+        client.aliases.set(alias, cmd.help.name);
+      });
+      resolve();
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+client.load = command => {
+  return new Promise((resolve, reject) => {
+    try {
+      let cmd = require(`./komutlar/${command}`);
+      client.commands.set(command, cmd);
+      cmd.conf.aliases.forEach(alias => {
+        client.aliases.set(alias, cmd.help.name);
+      });
+      resolve();
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+client.unload = command => {
+  return new Promise((resolve, reject) => {
+    try {
+      delete require.cache[require.resolve(`./komutlar/${command}`)];
+      let cmd = require(`./komutlar/${command}`);
+      client.commands.delete(command);
+      client.aliases.forEach((cmd, alias) => {
+        if (cmd === command) client.aliases.delete(alias);
+      });
+      resolve();
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+
+
+client.login("NjM4NzUxMTIwNDI4MjM2ODM0.XbhRvw.g9OYAWojmoVTRu4I6mIxP4Al1aE")
