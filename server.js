@@ -122,13 +122,13 @@ client.on("message", async message => {
 
 ///
 client.on("ready", async (guild, member) => { 
-let date = new Date('2019-05-05:00:00')
+let date = new Date('2020-05-05:12:20')
 let newdate = ms(date - Date.now())
 
 let kanal = "638750155574738956"
 
 client.setInterval(() => {
-  client.channels.get(kanal).setName(`Son ${newdate.days} gün, ${newdate.hours} saat, ${newdate.minutes} dakika kaldı!`)
+  client.channels.get(kanal).setName(`${newdate}`)
 }, 3000);
 });
 
