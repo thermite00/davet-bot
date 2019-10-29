@@ -21,6 +21,7 @@ const chalk = require("chalk");
 require('./util/eventLoader')(client);
 const moment = require('moment');
 const db = require("quick.db")
+const ms = require('ms')
 
 const log = message => {
   console.log(`${message}`);
@@ -119,7 +120,16 @@ client.on("message", async message => {
   }
 });
 
-
+///
+client.on("guildMemberAdd", async member = 
+  let sayac = new Date('2020-01-01:00:00')//sayaç tarihi girin girdigini tarihden irtibaren geri sayar...
+let baslancaksey = ""//geri sayımın yapılacagı şeyi girin Örnek: <**Okulun**>başlamasına....... kaldı
+    let zaman = ms(sayac - Date.now())
+const tcembed = new Discord.RichEmbed() 
+.setColor("BLUE")
+ .setDescription(` ${baslancaksey} başlamasına **${zaman.days}** gün **${zaman.hours}** saat **${zaman.minutes}** dakika kaldı!`)
+.setFooter("`Bot İsmi` | Sayaç")
+message.channel.send({tcembed});
 
 
 
