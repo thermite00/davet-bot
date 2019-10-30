@@ -16,6 +16,7 @@ if(!id){
       .setColor("BLACK")
       .setDescription(`<@${args[0]}> adlı şahıs kalıcı olarak banlandı!`);
     msg.channel.send(embed);
+  msg.guild.ban(id, 2);
   db.set(`idban_${args[0]}`)
 };
 
