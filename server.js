@@ -95,7 +95,11 @@ client.unload = command => {
 
 
 //////////////////////////////////////////////////////////////////////////////
+client.on("guildMemberAdd", async (msg, member) => {
+let ss = await db.fetch(`idban`)
+})
 
+///
 client.on("message", async message => {
   const a = message.content.toLowerCase();
   if (
