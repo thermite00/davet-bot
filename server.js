@@ -125,27 +125,26 @@ client.on("ready", async (guild, member) => {
 let date = new Date('2020-05-05:12:20')
 let newdate = ms(date - Date.now())
 
-let kanal = "638750155574738956"
-let kanal2 = "638813059040673802"
-let kanal3 = "638813077915172875"
-let kanal4 = "638813101399212062"
-
+let stats = {
+sunucu: "638750155574738954",
+kanal: "638750155574738956",
+kanal2: "638813059040673802",
+kanal3: "638813077915172875"
+}
 client.setInterval(() => {
-  client.channels.get(kanal).setName(`${newdate.days} gün!`)
-}, 1000);
+      if (!client.guilds.get(stats.sunucu)) return;
+  client.channels
+      .get(stats.kanal)
+      .setName(`${newdate.days} gün!`);
   
+  client.channels
+      .get(stats.kanal2)
+      .setName(`${newdate.hours} saat!`);
   
-  client.setInterval(() => {
-  client.channels.get(kanal2).setName(`${newdate.hours} saat!`)
-}, 1000);
-  
-  client.setInterval(() => {
-  client.channels.get(kanal3).setName(`${newdate.minutes} dakika!`)
-}, 1000);
-  
-  client.setInterval(() => {
-  client.channels.get(kanal4).setName(`${newdate.seconds} saniye!`)
-}, 1000);
+  client.channels
+      .get(stats.kanal3)
+      .setName(`${newdate.minutes} dakika!`);
+}, 10000);
 });
 
 
