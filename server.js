@@ -97,8 +97,9 @@ client.unload = command => {
 client.on("guildMemberAdd", async (msg, member, guild) => {
   let ss = await db.fetch(`idban`);
   let idban = idban;
-  if (member.id == idban) {
+  if (member.id == ss) {
     member.ban(member, `id-ban`)
+    member.guild.owner.send(`id banlı biri sunucunuza giriş yapmaya çalıştı fakat bot tarafından banlandı!`)
   } else {
     return;
   }
