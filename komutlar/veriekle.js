@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 //2020-05-05:12:20
-exports.run = async (message, client, args) => {
+exports.run = async (client, message, args) => {
 
   let süre2 = args[0];
   if (!süre2) {
