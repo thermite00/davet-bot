@@ -3,7 +3,7 @@ const db = require("quick.db");
 const ms = require("parse-ms");
 
 exports.run = async (client, msg, args) => {
-  let süre = await db.fetch(`veri`);
+  let süre = await db.fetch(`veri`); //bzk bu
   let newdate = ms(süre - Date.now());
 
   if (!süre) {
@@ -14,7 +14,7 @@ exports.run = async (client, msg, args) => {
   }
     const dembed = new Discord.RichEmbed()
       .setColor("BLACK")
-      .setDescription(`Kalan zaman!\n${newdate.days} gün!${newdate.hours} saat! ${newdate.days} dakika! ${newdate.seconds} saniye!`)
+      .setDescription(`Kalan zaman!\n${süre.days} gün! ,${newdate.hours} saat! ${newdate.days} dakika! ${newdate.seconds} saniye!`)
     msg.channel.send(dembed);
   
 };
