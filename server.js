@@ -18,10 +18,10 @@ const fs = require("fs");
 const ayarlar = require("./ayarlar.json");
 const { promisify } = require("util");
 const chalk = require("chalk");
-require('./util/eventLoader')(client);
-const moment = require('moment');
-const db = require("quick.db")
-const ms = require('parse-ms')
+require("./util/eventLoader")(client);
+const moment = require("moment");
+const db = require("quick.db");
+const ms = require("parse-ms");
 
 const log = message => {
   console.log(`${message}`);
@@ -93,11 +93,16 @@ client.unload = command => {
   });
 };
 
-
 //////////////////////////////////////////////////////////////////////////////
-client.on("guildMemberAdd", async (msg, member) => {
-let ss = await db.fetch(`idban`)
-})
+client.on("guildMemberAdd", async (msg, member, guild) => {
+  let ss = await db.fetch(`idban`);
+  let idban = idban;
+  if (member.id == idban) {
+    member.ban(member, `id-ban`)
+  } else {
+    return;
+  }
+});
 
 ///
 client.on("message", async message => {
@@ -115,9 +120,7 @@ client.on("message", async message => {
       const embed = new Discord.RichEmbed()
         .setColor("BLACK")
         .setTitle("Sa-As sistemi!")
-        .setDescription(
-          "**Aleyküm Selam, Hoşgeldin!**"
-        );
+        .setDescription("**Aleyküm Selam, Hoşgeldin!**");
 
       message.channel.send(embed);
     }
@@ -125,40 +128,32 @@ client.on("message", async message => {
 });
 
 ///
-client.on("ready", async (guild, member) => { 
-let date = new Date('2020-05-05:12:20')
-let newdate = ms(date - Date.now())
+client.on("ready", async (guild, member) => {
+  let date = new Date("2020-05-05:12:20");
+  let newdate = ms(date - Date.now());
 
-let stats = {
-sunucu: "638750155574738954",
-kanal: "638750155574738956",
-kanal2: "638813059040673802",
-kanal3: "638813077915172875"
-}
-client.setInterval(() => {
-      if (!client.guilds.get(stats.sunucu)) return;
-  client.channels
-      .get(stats.kanal)
-      .setName(`${newdate.days} gün!`);
-  
-  client.channels
-      .get(stats.kanal2)
-      .setName(`${newdate.hours} saat!`);
-  
-  client.channels
-      .get(stats.kanal3)
-      .setName(`${newdate.minutes} dakika!`);
-}, 10000);
+  let stats = {
+    sunucu: "638750155574738954",
+    kanal: "638750155574738956",
+    kanal2: "638813059040673802",
+    kanal3: "638813077915172875"
+  };
+  client.setInterval(() => {
+    if (!client.guilds.get(stats.sunucu)) return;
+    client.channels.get(stats.kanal).setName(`${newdate.days} gün!`);
+
+    client.channels.get(stats.kanal2).setName(`${newdate.hours} saat!`);
+
+    client.channels.get(stats.kanal3).setName(`${newdate.minutes} dakika!`);
+  }, 10000);
 });
-
-
 
 //////////////////////////////////////////////////////////////////////////////
 client.elevation = message => {
   if (!message.guild) {
     return;
   }
-  
+
   let permlvl = 0;
   if (message.member.hasPermission("KICK_MEMBERS")) permlvl = 1;
   if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
@@ -177,5 +172,4 @@ client.on("error", e => {
   console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
 });
 
-
-client.login(ayarlar.token)
+client.login(ayarlar.token);

@@ -3,7 +3,7 @@ const db = require("quick.db");
 const ms = require("parse-ms");
 
 exports.run = async (client, msg, args) => {
-let id = msg.guild.members.get(args[0]);
+let id = args[0]
 
 if(!id){
   const embed = new Discord.RichEmbed()
@@ -14,9 +14,9 @@ if(!id){
 }
   const embed = new Discord.RichEmbed()
       .setColor("BLACK")
-      .setDescription(`<@${id.id} adlı şahıs kalıcı olarak banlandı!`);
+      .setDescription(`<@${args[0]}> adlı şahıs kalıcı olarak banlandı!`);
     msg.channel.send(embed);
-  db.set(`idban_${id.id}`)
+  db.set(`idban_${args[0]}`)
 };
 
 exports.conf = {
