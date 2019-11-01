@@ -3,20 +3,25 @@ const db = require("quick.db");
 const ms = require("parse-ms");
 
 exports.run = async (client, msg, args) => {
-let date = new Date("2020-05-05:12:20");
+let date = new Date("2020-06-19:00:00");
 let newdate = ms(date - Date.now());
+  
+const embed = new Discord.RichEmbed()
+.setColor("BLACK")
+.setDescription(`Okulların açılmasına son!\n${newdate.days} Gün!\n${newdate.hours} Saat!\n${newdate.minutes} Dakika!`)
+msg.channel.send(embed)
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["verikontrol"],
+  aliases: [],
   permLevel: 4,
   kategori: "yapımcı"
 };
 
 exports.help = {
-  name: "veri-kontrol",
+  name: "okul-sayaç",
   description: "Sa-As sistemini ayarlarsınız.",
-  usage: "veri-kontrol"
+  usage: "okul-sayaç"
 };
