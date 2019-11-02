@@ -121,38 +121,7 @@ client.on("message", async message => {
 
 //////////////////////////////////////////////////////////////////////////////
 
-function kanaladı1() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            client.channels.get(`638750155574738956`).setName(`İstanbul`);
-            kanaladı2();
-        }, 500);
-      });
-}
-function kanaladı2() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            client.channels.get(`638750155574738956`).setName(`Life`);
-            kanaladı3();
-        }, 5000);
-      });
-}
-function kanaladı3() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            client.channels.get(`638750155574738956`).setName(`RPG`);
-            kanaladı4();
-        }, 5000);
-      });
-}
-function kanaladı4() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            client.channels.get(`638750155574738956`).setName(`İstanbul Life RPG`);
-            kanaladı1();
-        }, 5000); // kanal adının değişme hızı düşürmeyin kasma yaratır !
-      });
-}
+
 
 //////////////////////////////////////////////////////////////////////////////
 client.elevation = message => {
