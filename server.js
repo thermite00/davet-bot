@@ -94,18 +94,7 @@ client.unload = command => {
 };
 
 //////////////////////////////////////////////////////////////////////////////
-client.on("guildMemberAdd", async (msg, member, guild) => {
-  let ss = await db.fetch(`idban`);
-  let idban = idban;
-  if (member.id == ss) {
-    member.ban(member, `id-ban`)
-    member.guild.owner.send(`id banlı biri sunucunuza giriş yapmaya çalıştı fakat bot tarafından banlandı!`)
-  } else {
-    return;
-  }
-});
 
-///
 client.on("message", async message => {
   const a = message.content.toLowerCase();
   if (
@@ -121,32 +110,13 @@ client.on("message", async message => {
       const embed = new Discord.RichEmbed()
         .setColor("BLACK")
         .setTitle("Sa-As sistemi!")
-        .setDescription("**Aleyküm Selam, Hoşgeldin!**");
+        .setDescription(
+          "<a:Mor:640249897232236556> **Aleyküm Selam, Hoşgeldin!**"
+        );
 
       message.channel.send(embed);
     }
   }
-});
-
-///
-client.on("ready", async (guild, member) => {
-  let date = new Date("2020-05-05:12:20");
-  let newdate = ms(date - Date.now());
-
-  let stats = {
-    sunucu: "638750155574738954",
-    kanal: "638750155574738956",
-    kanal2: "638813059040673802",
-    kanal3: "638813077915172875"
-  };
-  client.setInterval(() => {
-    if (!client.guilds.get(stats.sunucu)) return;
-    client.channels.get(stats.kanal).setName(`${newdate.days} gün!`);
-
-    client.channels.get(stats.kanal2).setName(`${newdate.hours} saat!`);
-
-    client.channels.get(stats.kanal3).setName(`${newdate.minutes} dakika!`);
-  }, 10000);
 });
 
 //////////////////////////////////////////////////////////////////////////////
