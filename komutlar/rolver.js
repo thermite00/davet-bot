@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
         )
         .setColor("BLACK")
     );
-  let role = message.mentions.roles.first();
+  let role = message.mentions.roles.first() || message.guild.roles.find(rol => rol.name === args[0]);
 
   if (!role)
     return message.channel.sendEmbed(
@@ -31,21 +31,14 @@ module.exports.run = async (bot, message, args) => {
         )
         .setColor("BLACK")
     );
-  let aRole = message.mentions.roles.first();
-  if (!aRole)
-    return message.channel.sendEmbed(
-      new Discord.RichEmbed()
-        .setDescription(`Ne yazık ki sunucuda böyle bir rol bulunmamakta.`)
-        .setColor("BLACK")
-    );
 
-  if (rMember.roles.has(aRole.id))
+  if (rMember.roles.has(role.id))
     return message.channel.sendEmbed(
       new Discord.RichEmbed()
         .setDescription("Kullanıcı zaten bu role sahip!")
         .setColor("BLACK")
     );
-  await rMember.addRole(aRole.id);
+  await rMember.addRole(role.id);
   message.channel.sendEmbed(
     new Discord.RichEmbed()
       .setDescription(

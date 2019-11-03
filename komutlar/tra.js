@@ -24,25 +24,27 @@ exports.run = async (client, message, args) => {
   }
 
   const embed = new Discord.RichEmbed()
-    .setDescription(`Herkese ${rol} adlı rol verilmekte!`)
+    .setDescription(`Herkesten ${rol} adlı rol alınmakta!`)
     .setColor("BLACK");
 
-     message.guild.members.forEach(u => {
-    u.addRole(rol);
-  });
-  // message.channel.send('Herkese **'+ rol.name +'** adlı rol verildi!')
+
+    message.guild.members.forEach(u => {
+      u.removeRole(rol);
+    });
+
+
   message.channel.send(embed);
 };
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["herkeserolver", "toplu-rol-ver"],
+  aliases: ["toplurolal", "herkestenrolal"],
   permLevel: 3,
   kategori: 'moderasyon'
 };
 
 exports.help = {
-  name: "toplu-rol-ver",
-  description: "Herkese rol verirsiniz.",
-  usage: "toplu-rol-ver <@Rol>/<RolIsmi>"
+  name: "toplu-rol-al",
+  description: "Herkesten rol alırsınız.",
+  usage: "toplu-rol-al <@Rol>/<RolIsmi>"
 };
