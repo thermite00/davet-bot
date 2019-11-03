@@ -121,7 +121,7 @@ client.on("message", async message => {
 
 //////////////////////////////////////////////////////////////////////////////
 client.on("guildMemberAdd", async member => {
-  client.channels.get(`640598231214194718`).setName(`Son Üye: ${member.tag}`)
+  client.channels.get(`640602205514235927`).setName(`Son Üye: ${member.user.tag}`)
 })
 //////////////////////////////////////////////////////////////////////////////
 client.elevation = message => {
