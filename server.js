@@ -114,7 +114,7 @@ client.on("message", async message => {
           "<a:Mor:640249897232236556> **Aleyküm Selam, Hoşgeldin!**"
         );
 
-      message.channel.send(embed);
+      message.channel.send(embed).then(msg => msg.delete(5000));
     }
   }
 });
