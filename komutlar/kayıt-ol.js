@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send(embed);
     return;
   }
-  if(!message.channel.name == "genel-chat"){
+  if(message.channel.id !== "606962163143147548"){
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
       .setDescription(
