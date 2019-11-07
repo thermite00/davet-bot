@@ -1,10 +1,10 @@
 const db = require("quick.db");
 const Discord = require("discord.js");
 
-module.exports.run = async (bot, message, args, client) => {
+module.exports.run = async (bot, message, args) => {
   let ad = args[0];
   let role = 631565196179275816
-
+  
   if (!ad) {
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
@@ -14,8 +14,22 @@ module.exports.run = async (bot, message, args, client) => {
     message.channel.send(embed);
     return;
   }
+  if(!message.channel.name == "genel-chat"){
+    const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        "Burası kayıt kanalı değil!"
+      );
+    message.channel.send(embed);
+    return;
+  }
 
-  db.set(`kayıtoldu_${message.member.id}`);
+  const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        "Başarıyla kayıt oldun!"
+      );
+    message.channel.send(embed);
   message.member.setNickname(`${ad}`);
   message.member.addRole(`631565196179275816`)
 };
