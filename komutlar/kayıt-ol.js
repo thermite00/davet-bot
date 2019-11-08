@@ -2,14 +2,14 @@ const db = require("quick.db");
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-  let ad = args[0];
+  let ad = args.slice(0).join(" ");
   let role = 631565196179275816
   
   if (!ad) {
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
       .setDescription(
-        "Lütfen bir ad belirtiniz!\nÖrnek: k!kayıt-ol İsim_Soyisim"
+        "Lütfen bir ad belirtiniz!\nÖrnek: k!kayıt-ol İsim Soyisim"
       );
     message.channel.send(embed);
     return;
