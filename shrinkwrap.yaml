@@ -1,5 +1,6 @@
 dependencies:
   chalk: 2.4.2
+  discord-anti-spam: 2.0.4
   discord.js: 11.5.1
   express: 4.16.4
   fs: 0.0.2
@@ -245,6 +246,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
+  /discord-anti-spam/2.0.4:
+    dev: false
+    resolution:
+      integrity: sha512-JRtfD1LV/kpWfCIowxXR6ZW6+Nt8AVHyinZM6vKwtERZP5pE1+ZW0eGiByZllsIRtSUCoJXT9eMUMMLykQaW/g==
   /discord.js/11.5.1:
     dependencies:
       long: 4.0.0
@@ -1155,6 +1160,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   chalk: ^2.4.2
+  discord-anti-spam: ^2.0.3
   discord.js: ^11.5.1
   express: ^4.16.4
   fs: ^0.0.2

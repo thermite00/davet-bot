@@ -18,7 +18,8 @@
     "moment": "^2.24.0",
     "util": "^0.12.1",
     "http": "^0.0.0",
-    "parse-ms": "^2.0.0"
+    "parse-ms": "^2.0.0",
+    "discord-anti-spam": "^2.0.3"
   },
   "engines": {
     "node": "8.x"
