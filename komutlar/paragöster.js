@@ -2,8 +2,11 @@ const Discord = require("discord.js");
 const db = require("quick.db");
 
 exports.run = async (client, message, args) => {
-
-  let para = await db.fetch(`para_${message.guild.id}_${message.author.id}`);
+let user = message.mentions.users.first();
+  let para = await db.fetch(`para_${message.guild.id}_${user.id}`);
+  if(!user){
+    message.channel.send("Lütfen birini etiketleyiniz!")
+  }
   if (para == null) {
     const embed = new Discord.RichEmbed()
       .addField("Para:", `0₺`)
@@ -21,13 +24,13 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["pg"],
+  aliases: ["para-göster"],
   permLevel: 0,
   kategori: "puan"
 };
 
 exports.help = {
-  name: "para",
+  name: "paragöster",
   description: "Puanınızı gösterir.",
-  usage: "para"
+  usage: "paragöster"
 };
