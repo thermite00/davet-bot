@@ -1,34 +1,47 @@
-const Discord = require("discord.js")
-const db = require("quick.db")
+const Discord = require("discord.js");
+const db = require("quick.db");
 
-exports.run = async(msg, message, args) => {
-    let para = await db.fetch(`para_${message.guild.id}_${message.author.id}`);
-  const miktar = args[0]
-  if(!miktar.content == 1 || 2 || 3 || 4 || 5 || 6 || 7 || 8 || 9 || 0){
+exports.run = async (msg, message, args) => {
+  let para = await db.fetch(`para_${message.guild.id}_${message.author.id}`);
+  let rMember =
+    message.guild.member(message.mentions.users.first()) ||
+    message.guild.members.get(args[0]);
+
+  const miktar = args[1];
+  if (!rMember) {
     const embed = new Discord.RichEmbed()
-  .setDescr("Lütfen geçerli bir miktar giriniz!")
-  .setColor("BLACK")
-message.channel.send(embed)
-    
-  } else{
-  const embed = new Discord.RichEmbed()
-  .addField("Paran:", para)
-  .setColor("BLACK")
-message.channel.send(embed)
+      .setDescription("Lütfen parayı göndereceğiniz kişiyi etiketleyiniz!")
+      .setColor("BLACK");
+    message.channel.send(embed);
+    return;
   }
-}
-
+  if (!miktar) {
+    const embed = new Discord.RichEmbed()
+      .setDescription("Lütfen bir miktar belirtiniz!")
+      .setColor("BLACK");
+    message.channel.send(embed);
+    return;
+  }
+  
+  const embed = new Discord.RichEmbed()
+      .setDescription("Para transferi başarılı!")
+      .setColor("BLACK");
+    message.channel.send(embed);
+  
+  db.add(`para_${message.guild.id}_${message.author.id}`, -miktar);
+  db.add(`para_${message.guild.id}_${rMember.id}`, +miktar);
+};
 
 exports.conf = {
-  enabled: true, 
-  guildOnly: false, 
-  aliases: ['pn'],
+  enabled: true,
+  guildOnly: false,
+  aliases: ["p"],
   permLevel: 0,
-  kategori: 'puan'
+  kategori: "puan"
 };
 
 exports.help = {
-  name: 'puan', 
-  description: 'Puanınızı gösterir.',
-  usage: 'puan'
+  name: "para-gönder",
+  description: "PARA",
+  usage: "para-gönder"
 };

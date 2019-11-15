@@ -5,13 +5,13 @@ exports.run = async(msg, message, args) => {
     let para = await db.fetch(`para_${message.guild.id}_${message.author.id}`);
   if(para == null){
     const embed = new Discord.RichEmbed()
-  .addField("Paran:", `Hiç paran yok!`)
+  .addField("Paran:", `0₺`)
   .setColor("BLACK")
 message.channel.send(embed)
-    
+    return
   } else{
   const embed = new Discord.RichEmbed()
-  .addField("Paran:", para)
+  .addField("Paran:", para+`₺`)
   .setColor("BLACK")
 message.channel.send(embed)
   }
@@ -21,13 +21,13 @@ message.channel.send(embed)
 exports.conf = {
   enabled: true, 
   guildOnly: false, 
-  aliases: ['pn'],
+  aliases: ['pg'],
   permLevel: 0,
   kategori: 'puan'
 };
 
 exports.help = {
-  name: 'puan', 
+  name: 'para', 
   description: 'Puanınızı gösterir.',
-  usage: 'puan'
+  usage: 'para'
 };
