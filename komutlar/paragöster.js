@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const db = require("quick.db");
 
 exports.run = async (client, message, args) => {
-let user = message.mentions.users.first();
+let user = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   let para = await db.fetch(`para_${message.guild.id}_${user.id}`);
   if(!user){
     message.channel.send("Lütfen birini etiketleyiniz!")
