@@ -7,8 +7,8 @@ exports.run = async (client, message, args) => {
   
   const embed = new Discord.RichEmbed()
   .setColor("BLACK")
-  .setTitle("Realizm Bot Kullanıcı Komutları! (9)")
-  .setDescription(`${prefix}8ball = Sorunuzu cevaplar.\n${prefix}atatürk = Anlatmaya gerek olduğunu düşünmüyorum?\n${prefix}avatar = Avatar(ınızı) gösterir.\n${prefix}discrim = Belirtilen tagdaki kişileri listeler.\n${prefix}havadurumu = Havadurumunu gösterir.\n${prefix}hesapla = Ver işlemi cevaplasın!`)
+  .setTitle("Realizm Bot Kullanıcı Komutları! (10)")
+  .setDescription(`${prefix}roller = Rolleri gösterir.\n${prefix}yetkilerim = Yetkilerinizi gösterir.\n${prefix}servericon = Sunucu iconununu gösterir.\n${prefix}ascii = Ascii art ile yazı atarsınız\n${prefix}üyedurum = Üyelerin durumunu görürsünüz.\n${prefix}atatürk = Anlatmaya gerek olduğunu düşünmüyorum?\n${prefix}avatar = Avatar(ınızı) gösterir.\n${prefix}discrim = Belirtilen tagdaki kişileri listeler.\n${prefix}havadurumu = Havadurumunu gösterir.\n${prefix}hesapla = Ver işlemi cevaplasın!`)
   .setFooter(client.user.username, client.user.avatarURL)
   message.channel.send(embed)
 
@@ -17,13 +17,13 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["yy"],
+  aliases: ["yk"],
   permLevel: 0,
   kategori: "bot"
 };
 
 exports.help = {
-  name: "yetkili",
+  name: "kullanıcı",
   description: "Yardım Menüsü",
   usage: "yetkili"
 };
