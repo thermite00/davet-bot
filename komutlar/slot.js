@@ -30,6 +30,13 @@ exports.run = async (client, message, args) => {
     message.channel.send(embed);
     return;
   }
+  if(para < miktar){
+    const embed = new Discord.RichEmbed()
+      .setDescription("Ne yazık ki bu kadar paranız yok!")
+      .setColor("BLACK");
+    message.channel.send(embed);
+    return;
+  }
   if (slot1 === slot2 && slot1 === slot3) {
     const embed = new Discord.RichEmbed().setColor("BLACK")
       .setDescription(stripIndents`
@@ -41,8 +48,7 @@ exports.run = async (client, message, args) => {
 
 		Tebrikler, kazandınız!
 		`);
-    let miktar2 = miktar + miktar
-    db.add(`para_${message.guild.id}_${message.author.id}`, +miktar2);
+    db.add(`para_${message.guild.id}_${message.author.id}`, +miktar, +miktar);
     message.channel.send(embed);
   } else {
     const embed = new Discord.RichEmbed().setColor("BLACK")
