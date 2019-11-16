@@ -5,7 +5,7 @@ const slots = ["Siyah 1", "Kırmızı 2", "Siyah 3", "Kırmızı 4", "Siyah 5", 
 
 exports.run = async (client, message, args) => {
   let para = await db.fetch(`para_${message.guild.id}_${message.author.id}`);
-  let prefix = "k!"
+  let prefix = "!"
   let sembol = (await db.fetch(`psembol_${message.guild.id}`)) || "₺";
   let miktar = args[0].join(" ");
   let birim = args.slice(1)
