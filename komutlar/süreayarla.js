@@ -5,11 +5,12 @@ const Discord = require("discord.js"),
 exports.run = async (bot, message, args) => {
   let oyun = args[0]
   let süre = args[1]
+  let prefix = "k!"
   if(!oyun == "çalış"){
     const embed = new Discord.RichEmbed()
       .setTitle("Hata!")
       .setColor("BLACK")
-      .setDescription(`Lütfen geçerli bir birim giriniz!\nBirim(ler): çalış\nSüre ayarlama;\n1 Saniye = 1000`);
+      .setDescription(`Lütfen geçerli bir birim giriniz!\nBirim(ler): çalış\nSüre ayarlama;\n1 Saniye = 1000\nSıfırlamak için: ${prefix}süre-ayarla çalış sıfırla`);
     message.channel.send(embed);
     return;
   }
@@ -20,6 +21,15 @@ exports.run = async (bot, message, args) => {
       .setDescription(`Lütfen bir süre giriniz!`);
     message.channel.send(embed);
     return;
+  }
+  if(süre == "sıfırla"){
+    db.delete(`çalışs_${message.guild.id}`)
+    const embed = new Discord.RichEmbed()
+      .setTitle("Hata!")
+      .setColor("BLACK")
+      .setDescription(`Çalışma süresi başarıyla sıfırlandı!`);
+    message.channel.send(embed);
+    return
   }
   if(oyun == "çalış"){
     db.set(`çalışs_${message.guild.id}`, süre)
