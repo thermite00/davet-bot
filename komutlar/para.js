@@ -4,15 +4,16 @@ const db = require("quick.db");
 exports.run = async (client, message, args) => {
 
   let para = await db.fetch(`para_${message.guild.id}_${message.author.id}`);
+    let sembol = await db.fetch(`psembol_${message.guild.id}`) || "₺";
   if (para == null) {
     const embed = new Discord.RichEmbed()
-      .addField("Para:", `0₺`)
+      .addField("Para:", `0${sembol}`)
       .setColor("BLACK");
     message.channel.send(embed);
     return;
   } else {
     const embed = new Discord.RichEmbed()
-      .addField("Para:", para + `₺`)
+      .addField("Para:", para + `${sembol}`)
       .setColor("BLACK")
     message.channel.send(embed);
   }

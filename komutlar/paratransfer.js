@@ -24,11 +24,10 @@ exports.run = async (msg, message, args) => {
   }
   
   const embed = new Discord.RichEmbed()
-      .setDescription("Para transferi başarılı!")
+      .setDescription("Belirtilen miktardaki para gönderildi!")
       .setColor("BLACK");
     message.channel.send(embed);
   
-  db.add(`para_${message.guild.id}_${message.author.id}`, -miktar);
   db.add(`para_${message.guild.id}_${rMember.id}`, +miktar);
 };
 
@@ -36,12 +35,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ["p"],
-  permLevel: 0,
+  permLevel: 2,
   kategori: "puan"
 };
 
 exports.help = {
-  name: "para-gönder",
+  name: "para-ekle",
   description: "PARA",
-  usage: "para-gönder"
+  usage: "para-ekle"
 };

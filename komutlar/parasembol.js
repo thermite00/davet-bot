@@ -4,19 +4,34 @@ const Discord = require("discord.js"),
 
 exports.run = async (bot, message, args) => {
   let sembol = args[0];
+  let sem = await db.fetch(`psembol_${message.guild.id}`, sembol);
   if (!sembol) {
     const embed = new Discord.RichEmbed()
       .setDescription("Lütfen bir para sembolü belirtiniz!")
       .setColor("BLACK");
     message.channel.send(embed);
     return;
-  } else {
+  }
+  if (sembol === "sıfırla") {
+    if (!sem) {
+      const embed = new Discord.RichEmbed()
+        .setDescription("Para sembolü zaten ayarlanmamış!")
+        .setColor("BLACK");
+      message.channel.send(embed);
+      return;
+    }
     const embed = new Discord.RichEmbed()
-      .setDescription(`Para sembolü ${sembol} olarak ayarlandı!`)
+      .setDescription("Para sembolü başarıyla sıfırlandı!")
       .setColor("BLACK");
     message.channel.send(embed);
-    db.set(`psembol_${message.guild.id}`);
+    db.delete(`psembol_${message.guild.id}`);
+    return;
   }
+  const embed = new Discord.RichEmbed()
+    .setDescription(`Para sembolü ${sembol} olarak ayarlandı!`)
+    .setColor("BLACK");
+  message.channel.send(embed);
+  db.set(`psembol_${message.guild.id}`, sembol);
 };
 exports.conf = {
   enabled: true,
