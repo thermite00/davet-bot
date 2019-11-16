@@ -9,6 +9,7 @@ exports.run = async (client, message, args) => {
     .setColor("BLACK")
     .setTitle("Realizm Bot Yardım Menüsü!")
     .addField(`**${prefix}yetkili**`, `Ban, Kick gibi komutları gösterir.`)
+    .addField(`**${prefix}eğlence**`, `8ball, düello gibi komutları gösterir.`)
     .addField(`**${prefix}kullanıcı**`, `8ball, Avatar gibi komutları gösterir.`)
     .addField(`**${prefix}ekonomi**`, `Para, çalış gibi komutları gösterir.`)
     .addField(`**${prefix}bot**`, `İstatistik, Davet gibi komutları gösterir.`)   

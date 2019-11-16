@@ -7,8 +7,8 @@ exports.run = async (client, message, args) => {
   
   const embed = new Discord.RichEmbed()
   .setColor("BLACK")
-  .setTitle("Realizm Bot Bot Komutları! (4)")
-  .setDescription(`${prefix}istatistik = Bot istatistiklerini gösterir.\n${prefix}linkler = Botun davet linklerini gösterir.\n${prefix}ping = Botun pingini gösterir.\n${prefix}bilgi = Bot hakkında bilgi verir.`)
+  .setTitle("Realizm Bot Kullanıcı Komutları! (6)")
+  .setDescription(`${prefix}8ball = Sor sorunu cevaplasın!\n${prefix}adamasmaca = Adam asmaca oynarsınız.\n${prefix}düello = Düello oynarsınız.\n${prefix}kaçcm = Malın uzunluğunu ölçersiniz.\n${prefix}mc-kafa = Minehead.\n${prefix}şansısayım = Şanslısayınızı verir.`)
   .setFooter(client.user.username, client.user.avatarURL)
   message.channel.send(embed)
 
@@ -17,13 +17,13 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["yb"],
+  aliases: ["yeğ"],
   permLevel: 0,
   kategori: "bot"
 };
 
 exports.help = {
-  name: "bot",
+  name: "eğlence",
   description: "Yardım Menüsü",
-  usage: "bot"
+  usage: "yetkili"
 };
