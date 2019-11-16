@@ -11,18 +11,6 @@ exports.run = (client, message, args) => {
     return;
   }
 
-  if (!message.guild) {
-    const ozelmesajuyari = new Discord.RichEmbed()
-      .setColor("BLACK")
-      .setTimestamp()
-      .setAuthor(message.author.username, message.author.avatarURL)
-      .addField("`kick` adlı komut özel mesajlarda kullanıma kapanmıştır.")
-      .setFooter(client.user.username, client.user.avatarURL);
-    let kick = message.guild.member(
-      message.mentions.users.first() || message.guild.members.get(args[0])
-    );
-    return message.author.sendEmbed(ozelmesajuyari);
-  }
   let guild = message.guild;
   let user = message.mentions.users.first();
   let reason = args.slice(1).join(" ");

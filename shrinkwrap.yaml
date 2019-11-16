@@ -7,6 +7,7 @@ dependencies:
   discord-anti-spam: 2.0.4
   discord.js: 11.5.1
   express: 4.16.4
+  figlet: 1.2.4
   fs: 0.0.2
   http: 0.0.0
   jimp: 0.8.5
@@ -946,6 +947,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-1RQsDK7msRifh9OnYREGT4bIu/I=
+  /figlet/1.2.4:
+    dev: false
+    engines:
+      node: '>= 0.4.0'
+    resolution:
+      integrity: sha512-mv8YA9RruB4C5QawPaD29rEVx3N97ZTyNrE4DAfbhuo6tpcMdKnPVo8MlyT3RP5uPcg5M14bEJBq7kjFf4kAWg==
   /file-type/9.0.0:
     dev: false
     engines:
@@ -2112,6 +2119,7 @@ specifiers:
   discord-anti-spam: ^2.0.3
   discord.js: ^11.5.1
   express: ^4.16.4
+  figlet: ^1.2.4
   fs: ^0.0.2
   http: ^0.0.0
   jimp: ^0.8.5

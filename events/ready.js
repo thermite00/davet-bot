@@ -5,7 +5,7 @@ const ayarlar = require("../ayarlar.json");
 var prefix = ayarlar.prefix;
 
 module.exports = async client => {
-  var oyun = ["Kendine iyi bak.."]
+  var oyun = ["Realizm Community"]
 
   setInterval(async () => {
     var random = Math.floor(Math.random() * (oyun.length - 0 + 1) + 0);

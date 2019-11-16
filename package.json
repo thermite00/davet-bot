@@ -29,7 +29,8 @@
     "cpu-stats": "^1.0.0",
     "moment-duration-format": "^2.2.2",
     "cpu-stat": "^2.0.1",
-    "jimp": "^0.8.5"
+    "jimp": "^0.8.5",
+    "figlet": "^1.2.4"
   },
   "engines": {
     "node": "8.x"
