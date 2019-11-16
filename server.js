@@ -140,6 +140,11 @@ client.on("message", async (message, args) => {
 //////////////////////////////////////////////////////////////////////////////
 
 client.on("guildMemberAdd", async member => {
+  let para = await db.fetch(`girişmiktar_`)
+});
+
+//////////////////////////////////////////////////////////////////////////////
+client.on("guildMemberAdd", async member => {
   db.fetch(`dmgrşçkş_${member.guild.id}`).then(i => {
     if (i == "acik") {
       const msj = new Discord.RichEmbed()
