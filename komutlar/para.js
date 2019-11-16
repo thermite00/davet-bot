@@ -30,13 +30,14 @@ exports.run = async (client, message, args) => {
     message.channel.send(embed);
     return;
   }
+  else{
     const embed = new Discord.RichEmbed()
       .addField("Para:", para+`${sembol}`, true)
     .addField("Banka:", banka+`${sembol}`, true)
       .setColor("BLACK");
     message.channel.send(embed);
     return;
-  
+  }
 };
 
 exports.conf = {
