@@ -9,9 +9,26 @@ exports.run = async (bot, message, args) => {
     const embed = new Discord.RichEmbed()
       .setTitle("Hata!")
       .setColor("BLACK")
-      .setDescription(`Lütfen geçerli bir birim giriniz!\nBirim(ler): çalış`);
+      .setDescription(`Lütfen geçerli bir birim giriniz!\nBirim(ler): çalış\nSüre ayarlama;\n1 Saniye = 1000`);
     message.channel.send(embed);
     return;
+  }
+  if(!süre){
+    const embed = new Discord.RichEmbed()
+      .setTitle("Hata!")
+      .setColor("BLACK")
+      .setDescription(`Lütfen bir süre giriniz!`);
+    message.channel.send(embed);
+    return;
+  }
+  if(oyun == "çalış"){
+    db.set(`çalışs_${message.guild.id}`, süre)
+    const embed = new Discord.RichEmbed()
+      .setTitle("Hata!")
+      .setColor("BLACK")
+      .setDescription(`Çalışma süresi başarıyla ayarlandı!`);
+    message.channel.send(embed);
+    return
   }
 };
 exports.conf = {
@@ -23,7 +40,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "çalış",
-  description: "Günlük ödül alırsınız.",
-  usage: "çalış"
+  name: "süre-ayarla",
+  description: "süre-ayarla",
+  usage: "süre-ayarla"
 };
