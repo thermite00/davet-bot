@@ -41,7 +41,7 @@ exports.run = async (bot, message, args) => {
         .setColor("BLACK")
         .setAuthor(`${bot.user.username} - İstatistik`, bot.user.avatarURL)
 
-        .setFooter("Atom  İstatistikler", bot.user.avatarURL)
+        .setFooter("Realizm İstatistikler", bot.user.avatarURL)
         .addField(
           "<a:ayarlar:645222594240315423> ● **Çalışma süresi**",
           duration,
@@ -78,10 +78,7 @@ exports.run = async (bot, message, args) => {
           `%${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}`,
           true
         )
-        .addField(
-          "<a:ayarlar:645222594240315423> ● **DBL Vote:**",
-          `[[Tıkla!]](https://discordbots.org/bot/619970522754580482/vote)`
-        );
+        
 
       return m.edit(s);
     }, 3000);
