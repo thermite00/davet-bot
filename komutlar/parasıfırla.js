@@ -20,6 +20,7 @@ exports.run = async (msg, message, args) => {
     message.channel.send(embed);
   
   db.delete(`para_${message.guild.id}_${rMember.id}`);
+  db.delete(`bank_${message.guild.id}_${rMember.id}`);
 };
 
 exports.conf = {
