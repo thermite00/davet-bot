@@ -2,9 +2,7 @@ const Discord = require("discord.js");
 const weather = require("weather-js");
 const db = require("quick.db");
 exports.run = async (client, message, args) => {
-  let gold = await db.fetch(`gold_${message.member.id}`);
-
-  if (gold == "acik") {
+const Sunny = "Güneşli"
     weather.find({ search: args.join(" "), degreeType: "C" }, function(
       err,
       result
@@ -34,12 +32,6 @@ exports.run = async (client, message, args) => {
         .addField("Nem", `${current.humidity}%`, true);
       message.channel.send({ embed });
     });
-  } else {
-    message.channel.send(
-      "Ne yazık ki bu komutu kullanabilmek için gold üye olman gerek!"
-    );
-    return;
-  }
 };
 
 exports.conf = {

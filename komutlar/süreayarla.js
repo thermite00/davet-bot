@@ -5,7 +5,7 @@ const Discord = require("discord.js"),
 exports.run = async (bot, message, args) => {
   let oyun = args[0]
   let süre = args[1]
-  let prefix = "k!"
+  let prefix = "!"
   if(!oyun == "çalış"){
     const embed = new Discord.RichEmbed()
       .setTitle("Hata!")

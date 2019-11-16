@@ -11,7 +11,7 @@ const cevaplar = [
 ];
 
 exports.run = async (client, message, args) => {
-  let prefix = (await db.fetch(`prefix_${message.guild.id}`)) || "a!";
+  let prefix = (await db.fetch(`prefix_${message.guild.id}`)) || "!";
 
   var soru = args.join(" ");
 

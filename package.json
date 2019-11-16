@@ -23,7 +23,13 @@
     "common-tags": "^1.8.0",
     "crypto": "^1.0.1",
     "node-superfetch": "^0.1.9",
-    "weather-js": "^2.0.0"
+    "weather-js": "^2.0.0",
+    "math-expression-evaluator": "^1.2.17",
+    "os": "^0.1.1",
+    "cpu-stats": "^1.0.0",
+    "moment-duration-format": "^2.2.2",
+    "cpu-stat": "^2.0.1",
+    "jimp": "^0.8.5"
   },
   "engines": {
     "node": "8.x"
