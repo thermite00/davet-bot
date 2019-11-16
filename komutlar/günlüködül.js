@@ -4,7 +4,7 @@ const Discord = require("discord.js"),
 
 exports.run = async (bot, message, args) => {
   let cooldown = 1.728e8,
-    amount = Math.floor(Math.random() * 10) + 500;
+    amount = Math.floor(Math.random() * 10) + 100;
 
   let lastDaily = await db.fetch(
     `lastDaily_${message.guild.id}_${message.author.id}`
@@ -16,14 +16,14 @@ exports.run = async (bot, message, args) => {
       .setTitle("Hata!")
       .setColor("BLACK")
       .setDescription(
-        `Günlük ödülünü zaten aldın!\nYeniden almana: **${timeObj.hours} saat ${timeObj.minutes} dakika**!`
+        `Zaten çalışmaya gitmişsin!\nYeniden almana: **${timeObj.hours} saat ${timeObj.minutes} dakika**!`
       );
     message.channel.send(embed);
     return;
   } else {
     const embed = new Discord.RichEmbed()
-      .setTitle("Günlük ödülün!")
-      .setDescription(`Günlük Ödülün: **${amount}** ₺`)
+      .setTitle("Çalıştın!")
+      .setDescription(`İşten: **${amount}** ₺ kadar kazandın!`)
       .setColor("BLACK");
     message.channel.send(embed);
 
@@ -35,13 +35,13 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["günlük-ödül"],
+  aliases: [],
   permLevel: 0,
   kategori: "puan"
 };
 
 exports.help = {
-  name: "günlük",
+  name: "çalış",
   description: "Günlük ödül alırsınız.",
-  usage: "günlük"
+  usage: "çalış"
 };

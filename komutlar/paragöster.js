@@ -3,6 +3,7 @@ const db = require("quick.db");
 
 exports.run = async (client, message, args) => {
 let user = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  let sembol = db.fetch(`psembol_${message.guild.id}`) || "₺";
   let para = await db.fetch(`para_${message.guild.id}_${user.id}`);
   if(!user){
     message.channel.send("Lütfen birini etiketleyiniz!")
@@ -15,7 +16,7 @@ let user = message.guild.member(message.mentions.users.first()) || message.guild
     return;
   } else {
     const embed = new Discord.RichEmbed()
-      .addField("Para:", para + `₺`)
+      .addField("Para:", para + `${sembol}`)
       .setColor("BLACK")
     message.channel.send(embed);
   }
