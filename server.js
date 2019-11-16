@@ -139,8 +139,10 @@ client.on("message", async (message, args) => {
 
 //////////////////////////////////////////////////////////////////////////////
 
-client.on("guildMemberAdd", async member => {
-  let para = await db.fetch(`girişmiktar_`)
+client.on("guildMemberAdd", async (member, guild) => {
+  let para = await db.fetch(`girişmiktar_${member.guild.id}`)
+  if(!para) return
+  db.add(`para_${member.guild.id}_${member.id}`, +para)
 });
 
 //////////////////////////////////////////////////////////////////////////////

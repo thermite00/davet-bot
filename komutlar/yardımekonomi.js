@@ -7,8 +7,8 @@ exports.run = async (client, message, args) => {
   
   const embed = new Discord.RichEmbed()
   .setColor("BLACK")
-  .setTitle("Realizm Bot Ekonomi Komutları![BETA] (11)")
-  .setDescription(`${prefix}çalış = Para kazanırsınız.\n${prefix}slot = Kumar oynayarak para katlamak?\n${prefix}süre-ayarla = Para kaynaklarının sürelerini ayarlarsınız.\n${prefix}rulet = Rulet oynarsınız.\n${prefix}para-gönder = İstediğiniz kişiye para gönderirsiniz.\n${prefix}parasıfırla = Belirtilen kişinin parasını sıfırlarsınız.\n${prefix}parasil = Belirtilen miktarda belirtilen kişinin parasını silersiniz.\n${prefix}para-sembol = Paranın sembolünü ayarlarsınız.\n${prefix}paragöster = Belirtilen kişinin parasını gösterir.\n${prefix}para-ekle = Para eklersiniz.\n${prefix}para = Paranızı gösterir.`)
+  .setTitle("Realizm Bot Ekonomi Komutları![BETA] (12)")
+  .setDescription(`${prefix}çalış = Para kazanırsınız.\n${prefix}slot = Kumar oynayarak para katlamak?\n${prefix}süre-ayarla = Para kaynaklarının sürelerini ayarlarsınız.\n${prefix}rulet = Rulet oynarsınız.\n${prefix}para-gönder = İstediğiniz kişiye para gönderirsiniz.\n${prefix}parasıfırla = Belirtilen kişinin parasını sıfırlarsınız.\n${prefix}parasil = Belirtilen miktarda belirtilen kişinin parasını silersiniz.\n${prefix}para-sembol = Paranın sembolünü ayarlarsınız.\n${prefix}paragöster = Belirtilen kişinin parasını gösterir.\n${prefix}para-ekle = Para eklersiniz.\n${prefix}para = Paranızı gösterir.\n${prefix}başlangıç-para = Sunucuya katılanların ne kadar parayla başlayacağını belirlersiniz.`)
   .setFooter(client.user.username, client.user.avatarURL)
   message.channel.send(embed)
 
