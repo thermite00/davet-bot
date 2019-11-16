@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
     .addField(`**${prefix}yetkili**`, `Ban, Kick gibi komutları gösterir.`)
     .addField(`**${prefix}eğlence**`, `8ball, düello gibi komutları gösterir.`)
     .addField(`**${prefix}kullanıcı**`, `8ball, Avatar gibi komutları gösterir.`)
-    .addField(`**${prefix}ekonomi**`, `Para, çalış gibi komutları gösterir.`)
+    .addField(`**${prefix}ekonomi [BETA]**`, `Para, çalış gibi komutları gösterir.`)
     .addField(`**${prefix}bot**`, `İstatistik, Davet gibi komutları gösterir.`)   
     .setFooter(client.user.username, client.user.avatarURL);
 
