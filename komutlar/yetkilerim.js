@@ -15,40 +15,40 @@ let x;
     let x9;
     
     //yönetici
-    if (msg.member.hasPermission("ADMINISTRATOR")) x = "<a:tik:627830420070727690> "
-    if (!msg.member.hasPermission("ADMINISTRATOR")) x = "<a:dec:627888623836200972> "
+    if (msg.member.hasPermission("ADMINISTRATOR")) x = "<a:onay:645245193804578817> "
+    if (!msg.member.hasPermission("ADMINISTRATOR")) x = "<a:red:645245163555520532> "
     
     //Denetim kaydı
-    if (msg.member.hasPermission("VIEW_AUDIT_LOG")) x2 = "<a:tik:627830420070727690>  "
-    if (!msg.member.hasPermission("VIEW_AUDIT_LOG")) x2 = "<a:dec:627888623836200972> "
+    if (msg.member.hasPermission("VIEW_AUDIT_LOG")) x2 = "<a:onay:645245193804578817>  "
+    if (!msg.member.hasPermission("VIEW_AUDIT_LOG")) x2 = "<a:red:645245163555520532> "
     
     //Sunucuyu yönet
-    if (msg.member.hasPermission("MANAGE_GUILD")) x3 = "<a:tik:627830420070727690> "
-    if (!msg.member.hasPermission("MANAGE_GUILD")) x3 = "<a:dec:627888623836200972> "
+    if (msg.member.hasPermission("MANAGE_GUILD")) x3 = "<a:onay:645245193804578817> "
+    if (!msg.member.hasPermission("MANAGE_GUILD")) x3 = "<a:red:645245163555520532> "
     
     //Rolleri yönet
-    if (msg.member.hasPermission("MANAGE_ROLES")) x4 = "<a:tik:627830420070727690> "
-    if (!msg.member.hasPermission("MANAGE_ROLES")) x4 = "<a:dec:627888623836200972> "
+    if (msg.member.hasPermission("MANAGE_ROLES")) x4 = "<a:onay:645245193804578817> "
+    if (!msg.member.hasPermission("MANAGE_ROLES")) x4 = "<a:red:645245163555520532> "
     
     //Kanalları yönet
-    if (msg.member.hasPermission("MANAGE_CHANNELS")) x5 = "<a:tik:627830420070727690> "
-    if (!msg.member.hasPermission("MANAGE_CHANNELS")) x5 = "<a:dec:627888623836200972> "
+    if (msg.member.hasPermission("MANAGE_CHANNELS")) x5 = "<a:onay:645245193804578817> "
+    if (!msg.member.hasPermission("MANAGE_CHANNELS")) x5 = "<a:red:645245163555520532> "
     
     //üyeleri at
-    if (msg.member.hasPermission("KICK_MEMBERS")) x6 = "<a:tik:627830420070727690> "
-    if (!msg.member.hasPermission("KICK_MEMBERS")) x6 = "<a:dec:627888623836200972> "
+    if (msg.member.hasPermission("KICK_MEMBERS")) x6 = "<a:onay:645245193804578817> "
+    if (!msg.member.hasPermission("KICK_MEMBERS")) x6 = "<a:red:645245163555520532> "
     
     //üyeleri yasakla
-    if (msg.member.hasPermission("BAN_MEMBERS")) x7 = "<a:tik:627830420070727690> "
-    if (!msg.member.hasPermission("BAN_MEMBERS")) x7 = "<a:dec:627888623836200972> "
+    if (msg.member.hasPermission("BAN_MEMBERS")) x7 = "<a:onay:645245193804578817> "
+    if (!msg.member.hasPermission("BAN_MEMBERS")) x7 = "<a:red:645245163555520532> "
     
     //mesajları yönet
-    if (msg.member.hasPermission("MANAGE_MESSAGES")) x8 = "<a:tik:627830420070727690> "
-    if (!msg.member.hasPermission("MANAGE_MESSAGES")) x8 = "<a:dec:627888623836200972> "
+    if (msg.member.hasPermission("MANAGE_MESSAGES")) x8 = "<a:onay:645245193804578817> "
+    if (!msg.member.hasPermission("MANAGE_MESSAGES")) x8 = "<a:red:645245163555520532> "
     
     //kullanıcı adlarını yönet
-    if (msg.member.hasPermission("MANAGE_NICKNAMES")) x9 = "<a:tik:627830420070727690> "
-    if (!msg.member.hasPermission("MANAGE_NICKNAMES")) x9 = "<a:dec:627888623836200972> "
+    if (msg.member.hasPermission("MANAGE_NICKNAMES")) x9 = "<a:onay:645245193804578817> "
+    if (!msg.member.hasPermission("MANAGE_NICKNAMES")) x9 = "<a:red:645245163555520532> "
 
 
     const embed = new Discord.RichEmbed()
