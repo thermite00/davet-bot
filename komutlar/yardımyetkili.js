@@ -7,8 +7,8 @@ exports.run = async (client, message, args) => {
   
   const embed = new Discord.RichEmbed()
   .setColor("BLACK")
-  .setTitle("Atom Bot Yetkili Komutları! (13)")
-  .setDescription(`${prefix}ad = Belirtilen şahsın adını değiştirir.\n${prefix}ban = Belirtilen şahsı sunucudan yasaklar.\n${prefix}rol-ver = Kişilere rol vermeye yarar.\n${prefix}rol-al = Kişilerden rol almaya yarar.\n${prefix}toplu-rol-al = Herkesten toplu rol almaya yarar.\n${prefix}toplu-rol-ver = Toplu rol vermeye yarar.\n${prefix}ban = Kişileri banlamaya yarar.\n${prefix}kick = Kişileri sunucudan atmaya yarar.\n${prefix}slowmode = Kanallara yavaşmod eklemeye yarar.\n${prefix}temizle = Mesajları silmeye yarar.\n${prefix}oylama = Oylama yapmaya yarar.\n${prefix}reklam-taraması = Reklam taraması yapmaya yarar.\n${prefix}emoji-ekle = Emoji eklemeye yarar.`)
+  .setTitle("Realizm Bot Yetkili Komutları! (9)")
+  .setDescription(`${prefix}ad = Belirtilen şahsın adını değiştirir.\n${prefix}ban = Belirtilen şahsı sunucudan yasaklar.\n${prefix}rol-ver = Kişilere rol vermeye yarar.\n${prefix}rol-al = Kişilerden rol almaya yarar.\n${prefix}oylama = Oylama yapmaya yarar.\n${prefix}reklam-engel = Sunucunuzda reklam engelini açıp kapamaya yarar.\n${prefix}reklam-taraması = Sunucunuzda reklam taraması yapar.\n${prefix}sa-as = Selam sistemini ayarlamaya yarar.\n${prefix}slowmode = Kanallarda yavaş modu ayarlamaya yarar.`)
   .setFooter(client.user.username, client.user.avatarURL)
   message.channel.send(embed)
 
