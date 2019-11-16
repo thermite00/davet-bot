@@ -36,7 +36,7 @@ exports.run = async (bot, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: [],
+  aliases: ["para-sembol"],
   permLevel: 0,
   kategori: "puan"
 };

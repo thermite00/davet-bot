@@ -27,20 +27,20 @@ exports.run = async (msg, message, args) => {
       .setDescription("Belirtilen miktardaki para gönderildi!")
       .setColor("BLACK");
     message.channel.send(embed);
-  db.add(`para_${message.guild.id}_${message.author.id}`, -miktar)
+  
   db.add(`para_${message.guild.id}_${rMember.id}`, +miktar);
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["paragönder"],
+  aliases: ["paraekle"],
   permLevel: 2,
   kategori: "puan"
 };
 
 exports.help = {
-  name: "para-gönder",
-  description: "gönder",
-  usage: "para-gönder"
+  name: "para-ekle",
+  description: "PARA",
+  usage: "para-ekle"
 };

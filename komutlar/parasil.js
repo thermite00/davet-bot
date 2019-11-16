@@ -10,7 +10,7 @@ exports.run = async (msg, message, args) => {
   const miktar = args[1];
   if (!rMember) {
     const embed = new Discord.RichEmbed()
-      .setDescription("Lütfen parayı göndereceğiniz kişiyi etiketleyiniz!")
+      .setDescription("Lütfen parayı alacağınız kişiyi etiketleyin!")
       .setColor("BLACK");
     message.channel.send(embed);
     return;
@@ -24,23 +24,23 @@ exports.run = async (msg, message, args) => {
   }
   
   const embed = new Discord.RichEmbed()
-      .setDescription("Belirtilen miktardaki para gönderildi!")
+      .setDescription("Belirtilen miktardaki para alındı!")
       .setColor("BLACK");
     message.channel.send(embed);
-  db.add(`para_${message.guild.id}_${message.author.id}`, -miktar)
-  db.add(`para_${message.guild.id}_${rMember.id}`, +miktar);
+  
+  db.add(`para_${message.guild.id}_${rMember.id}`, -miktar);
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["paragönder"],
+  aliases: ["parasil"],
   permLevel: 2,
   kategori: "puan"
 };
 
 exports.help = {
-  name: "para-gönder",
-  description: "gönder",
-  usage: "para-gönder"
+  name: "para-sil",
+  description: "PARA",
+  usage: "para-sil"
 };
