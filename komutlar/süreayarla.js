@@ -22,15 +22,6 @@ exports.run = async (bot, message, args) => {
     message.channel.send(embed);
     return;
   }
-  if(süre == "sıfırla"){
-    db.delete(`çalışs_${message.guild.id}`)
-    const embed = new Discord.RichEmbed()
-      .setTitle("Hata!")
-      .setColor("BLACK")
-      .setDescription(`Çalışma süresi başarıyla sıfırlandı!`);
-    message.channel.send(embed);
-    return
-  }
   if(oyun == "çalış"){
     db.set(`çalışs_${message.guild.id}`, süre)
     const embed = new Discord.RichEmbed()
