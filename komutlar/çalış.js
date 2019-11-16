@@ -3,7 +3,7 @@ const Discord = require("discord.js"),
   ms = require("parse-ms");
 
 exports.run = async (bot, message, args) => {
-  let cooldown = 1.728e8,
+  let cooldown = 300000,
     amount = Math.floor(Math.random() * 10) + 100;
 
   let lastDaily = await db.fetch(
@@ -16,7 +16,7 @@ exports.run = async (bot, message, args) => {
       .setTitle("Hata!")
       .setColor("BLACK")
       .setDescription(
-        `Zaten çalışmaya gitmişsin!\nYeniden almana: **${timeObj.hours} saat ${timeObj.minutes} dakika**!`
+        `Zaten çalışmaya gitmişsin!\nYeniden çalışmana: **${timeObj.hours} saat ${timeObj.minutes} dakika**!`
       );
     message.channel.send(embed);
     return;
