@@ -24,7 +24,7 @@ exports.run = async (msg, message, args) => {
   }
   
   const embed = new Discord.RichEmbed()
-      .setDescription("Belirtilen miktardaki para gönderildi!")
+      .setDescription("Belirtilen miktardaki para eklendi!")
       .setColor("BLACK");
     message.channel.send(embed);
   

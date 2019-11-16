@@ -22,6 +22,13 @@ exports.run = async (msg, message, args) => {
     message.channel.send(embed);
     return;
   }
+  if(para < miktar){
+    const embed = new Discord.RichEmbed()
+      .setDescription("Lütfen bir miktar belirtiniz!")
+      .setColor("BLACK");
+    message.channel.send(embed);
+    return;
+  }
   
   const embed = new Discord.RichEmbed()
       .setDescription("Belirtilen miktardaki para gönderildi!")

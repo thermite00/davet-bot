@@ -1,5 +1,6 @@
 dependencies:
   chalk: 2.4.2
+  common-tags: 1.8.0
   discord-anti-spam: 2.0.4
   discord.js: 11.5.1
   express: 4.16.4
@@ -162,6 +163,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-p9BVi9icQveV3UIyj3QIMcpTvCU=
+  /common-tags/1.8.0:
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    resolution:
+      integrity: sha512-6P6g0uetGpW/sdyUy/iQQCbFF0kWVMSIVSyYz7Zgjcgh8mgw8PQzDNZeyZ5DQ2gM7LBoZPHmnjz8rUthkBG5tw==
   /component-bind/1.0.0:
     dev: false
     resolution:
@@ -1160,6 +1167,7 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   chalk: ^2.4.2
+  common-tags: ^1.8.0
   discord-anti-spam: ^2.0.3
   discord.js: ^11.5.1
   express: ^4.16.4
