@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     .setTitle("Realizm Bot Yardım Menüsü!")
     .addField(`**${prefix}yetkili**`, `Ban, Kick gibi komutları gösterir.`)
     .addField(`**${prefix}kullanıcı**`, `8ball, Avatar gibi komutları gösterir.`)
-    .addField(`**${prefix}ayarlar**`, `Otorol, Sayaç gibi komutları gösterir.`)
+    .addField(`**${prefix}ekonomi**`, `Para, çalış gibi komutları gösterir.`)
     .addField(`**${prefix}bot**`, `İstatistik, Davet gibi komutları gösterir.`)   
     .setFooter(client.user.username, client.user.avatarURL);
 
