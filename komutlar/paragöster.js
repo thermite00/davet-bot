@@ -10,7 +10,7 @@ let user = message.guild.member(message.mentions.users.first()) || message.guild
   }
   if (para == null) {
     const embed = new Discord.RichEmbed()
-      .addField("Para:", `0₺`)
+      .addField("Para:", `0${sembol}`)
       .setColor("BLACK");
     message.channel.send(embed);
     return;

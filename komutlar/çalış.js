@@ -16,7 +16,7 @@ exports.run = async (bot, message, args) => {
       .setTitle("Hata!")
       .setColor("BLACK")
       .setDescription(
-        `Zaten çalışmaya gitmişsin!\nYeniden çalışmana: **${timeObj.hours} saat ${timeObj.minutes} dakika**!`
+        `Zaten çalışmaya gitmişsin!\nYeniden çalışmana: **${timeObj.minutes} dakika ${timeObj.seconds} saniye**!`
       );
     message.channel.send(embed);
     return;
