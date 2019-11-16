@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
 
   let para = await db.fetch(`para_${message.guild.id}_${message.author.id}`);
   let banka = await db.fetch(`bank_${message.guild.id}_${message.author.id}`);
-  let net = para+banka
+  var net = para+banka;
     let sembol = await db.fetch(`psembol_${message.guild.id}`) || "₺";
   if (para == null) {
     const embed = new Discord.RichEmbed()
@@ -33,9 +33,12 @@ exports.run = async (client, message, args) => {
     return;
   }
     const embed = new Discord.RichEmbed()
-      .addField("Para:", para + `${sembol}`)
-      .setColor("BLACK")
+      .addField("Para:", para+`${sembol}`, true)
+    .addField("Banka:", banka+`${sembol}`, true)
+    .addField("Net miktar:", net+`0${sembol}`, true)
+      .setColor("BLACK");
     message.channel.send(embed);
+    return;
   
 };
 
