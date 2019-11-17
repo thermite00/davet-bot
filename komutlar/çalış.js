@@ -4,6 +4,7 @@ const Discord = require("discord.js"),
 
 exports.run = async (bot, message, args) => {
   let cevaplar = ["Yaşlıları karşıdan karşıya geçirdin. İyiliğinden dolayı ödüllendirildin!", "Barınak'da ki köpekleri gezmeye çıkardın, Barınak sahibi sana para verdi!", "Sokakta ki çocuklara balon sattın", "Youtuber oldun ve videolardan para kazanmaya başladın!", "Sokakta dilencilik yaparak para kazandın"]
+  let log = await db.fetch(`logk_${message.guild.id}`)
   let cooldown = await db.fetch(`çalışs_${message.guild.id}`) || "300000";
   let amount = Math.floor(Math.random() * 10) + 100;
   let sembol = await db.fetch(`psembol_${message.guild.id}`) || "₺";
@@ -23,6 +24,22 @@ exports.run = async (bot, message, args) => {
     message.channel.send(embed);
     return;
   } else {
+    if(!log){
+      const embed = new Discord.RichEmbed()
+      .setTitle("Çalıştın!")
+.setColor(`BLACK`)
+.setDescription(`${cevaplar}\n**${amount}**${sembol} kadar kazandın!`)
+message.channel.send(embed)
+      return
+    }
+    else{
+    const dmebed = new Discord.RichEmbed()
+.setColor(`BLACK`)
+.setTitle("Komut: 
+.setFooter(message.author.avatarURL)
+log.send(dmebed)
+      
+      
     const embed = new Discord.RichEmbed()
       .setTitle("Çalıştın!")
       .setDescription(`${cevaplar}\n**${amount}**${sembol} kadar kazandın!`)
@@ -32,6 +49,7 @@ exports.run = async (bot, message, args) => {
     db.set(`lastDaily_${message.guild.id}_${message.author.id}`, Date.now());
 
     db.add(`para_${message.guild.id}_${message.author.id}`, amount);
+  }
   }
 };
 exports.conf = {

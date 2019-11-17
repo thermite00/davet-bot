@@ -12,17 +12,21 @@ exports.run = async (bot, message, args) => {
     message.channel.send(embed);
     return;
   }
+  const embed = new Discord.RichEmbed()
+  .setColor("BLACK")
+  .setDescription(`Para log kanalı ${log} olarak ayarlandı!`)
+  message.channel.send(embed)
   db.set(`logk_${message.guild.id}`, message.mentions.channels.first().id)
 };
 module.exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["durumüye"],
-  permLevel: 0
+  aliases: ["paralog"],
+  permLevel: 2
 };
 
 module.exports.help = {
-  name: "üyedurum",
+  name: "para-log",
   description: "Üye Durumlarını ve sunucudaki üye sayısını gösterir",
-  usage: "üyedurum"
+  usage: "para-log"
 };
