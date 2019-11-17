@@ -3,7 +3,7 @@ const Discord = require("discord.js"),
   ms = require("parse-ms");
 
 exports.run = async (bot, message, args) => {
-  const cevaplar = ("Yaşlıları karşıdan karşıya geçirdin. İyiliğinden dolayı ödüllendirildin!", "Barınak'da ki köpekleri gezmeye çıkardın, Barınak sahibi sana para verdi!", "Sokakta ki çocuklara balon sattın", "Youtuber oldun ve videolardan para kazanmaya başladın!", "Sokakta dilencilik yaparak para kazandın")
+  let cevaplar = ["Yaşlıları karşıdan karşıya geçirdin. İyiliğinden dolayı ödüllendirildin!", "Barınak'da ki köpekleri gezmeye çıkardın, Barınak sahibi sana para verdi!", "Sokakta ki çocuklara balon sattın", "Youtuber oldun ve videolardan para kazanmaya başladın!", "Sokakta dilencilik yaparak para kazandın"]
   let cooldown = await db.fetch(`çalışs_${message.guild.id}`) || "300000";
   let amount = Math.floor(Math.random() * 10) + 100;
   let sembol = await db.fetch(`psembol_${message.guild.id}`) || "₺";
