@@ -8,32 +8,33 @@ exports.run = async (client, message, args) => {
     let sembol = await db.fetch(`psembol_${message.guild.id}`) || "₺";
   if (para == null) {
     const embed = new Discord.RichEmbed()
-      .addField("Para:", `0${sembol}`, true)
-    .addField("Banka:", banka+`${sembol}`, true)
+      .addField("Para:", `0${sembol}`, false)
+    .addField("Banka:", banka+`${sembol}`, false)
       .setColor("BLACK");
     message.channel.send(embed);
     return;
   }
   if (banka == null) {
     const embed = new Discord.RichEmbed()
-      .addField("Para:", para+ `${sembol}`, true)
-    .addField("Banka:", `0${sembol}`, true)
+      .addField("Para:", para+ `${sembol}`, false)
+    .addField("Banka:", `0${sembol}`, false)
       .setColor("BLACK");
     message.channel.send(embed);
     return;
   }
   if (banka == null && para == null) {
     const embed = new Discord.RichEmbed()
-      .addField("Para:", `0${sembol}`, true)
-    .addField("Banka:", `0${sembol}`, true)
+      .addField("Para:", `0${sembol}`, false)
+    .addField("Banka:", `0${sembol}`, false)
       .setColor("BLACK");
     message.channel.send(embed);
     return;
   }
   else{
     const embed = new Discord.RichEmbed()
-      .addField("Para:", para+`${sembol}`, true)
-    .addField("Banka:", banka+`${sembol}`, true)
+      .addField("Para:", para+`${sembol}`, false)
+    .addField("Banka:", banka+`${sembol}`, false)
+    
       .setColor("BLACK");
     message.channel.send(embed);
     return;
