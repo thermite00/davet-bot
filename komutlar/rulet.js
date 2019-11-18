@@ -43,6 +43,7 @@ const slots = [
 ];
 
 exports.run = async (client, message, args) => {
+  let log = await db.fetch(`logk_${message.guild.id}`);
   let para = await db.fetch(`para_${message.guild.id}_${message.author.id}`);
   let prefix = "!";
   let sembol = (await db.fetch(`psembol_${message.guild.id}`)) || "₺";
@@ -84,6 +85,25 @@ exports.run = async (client, message, args) => {
   }
   
   if (slot1 == birim) {
+    if(!log){
+      const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `Tebrikler Kazandınız!\nSonuç;\nSeçtiğiniz: ${birim}\nÇıkan: ${slot1}`
+      );
+    db.add(`para_${message.guild.id}_${message.author.id}`, +miktar, +miktar);
+    message.channel.send(embed);
+    return;
+    }else{
+      const dmebed = new Discord.RichEmbed()
+        .setColor(`BLACK`)
+        .setTitle("Komut: Rulet")
+      .addField(`Sonuç:`, "Kazandı")
+        .addField("Kazandığı:", `**${miktar*2}**`)
+        .setFooter(message.author.username, message.author.avatarURL);
+      client.channels.get(log).send(dmebed);
+      
+      
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
       .setDescription(
@@ -92,7 +112,27 @@ exports.run = async (client, message, args) => {
     db.add(`para_${message.guild.id}_${message.author.id}`, +miktar, +miktar);
     message.channel.send(embed);
     return;
+    }
   } else {
+    if(!log){
+      const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `Kaybettiniz!\nSonuç;\nSeçtiğiniz: ${birim}\nÇıkan: ${slot1}`
+      );
+    db.add(`para_${message.guild.id}_${message.author.id}`, -miktar);
+    message.channel.send(embed);
+      return
+    }
+    else{
+      const dmebed = new Discord.RichEmbed()
+        .setColor(`BLACK`)
+        .setTitle("Komut: Rulet")
+      .addField(`Sonuç:`, "Kaybetti")
+        .addField("Kaybettiği:", `**${miktar}**`)
+        .setFooter(message.author.username, message.author.avatarURL);
+      client.channels.get(log).send(dmebed);
+      
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
       .setDescription(
@@ -100,6 +140,8 @@ exports.run = async (client, message, args) => {
       );
     db.add(`para_${message.guild.id}_${message.author.id}`, -miktar);
     message.channel.send(embed);
+    return
+    }
   }
 };
 
