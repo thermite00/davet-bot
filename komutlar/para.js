@@ -10,6 +10,7 @@ exports.run = async (client, message, args) => {
     const embed = new Discord.RichEmbed()
       .addField("Para:", `0${sembol}`, false)
     .addField("Banka:", banka+`${sembol}`, false)
+    .setFooter(message.author.username, message.author.avatarURL)
       .setColor("BLACK");
     message.channel.send(embed);
     return;
@@ -18,6 +19,7 @@ exports.run = async (client, message, args) => {
     const embed = new Discord.RichEmbed()
       .addField("Para:", para+ `${sembol}`, false)
     .addField("Banka:", `0${sembol}`, false)
+    .setFooter(message.author.username, message.author.avatarURL)
       .setColor("BLACK");
     message.channel.send(embed);
     return;
@@ -26,6 +28,7 @@ exports.run = async (client, message, args) => {
     const embed = new Discord.RichEmbed()
       .addField("Para:", `0${sembol}`, false)
     .addField("Banka:", `0${sembol}`, false)
+    .setFooter(message.author.username, message.author.avatarURL)
       .setColor("BLACK");
     message.channel.send(embed);
     return;
@@ -34,7 +37,7 @@ exports.run = async (client, message, args) => {
     const embed = new Discord.RichEmbed()
       .addField("Para:", para+`${sembol}`, false)
     .addField("Banka:", banka+`${sembol}`, false)
-    
+    .setFooter(message.author.username, message.author.avatarURL)
       .setColor("BLACK");
     message.channel.send(embed);
     return;
