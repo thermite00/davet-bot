@@ -6,7 +6,7 @@ exports.run = (client, message) => {
       var espriler = ['Şansı sayın **1**', 'Şansı sayın **2**', 'Şansı sayın **3**', 'Şansı sayın **4**', 'Şansı sayın **5**', 'Şansı sayın **6**', 'Şansı sayın **7**', 'Şansı sayın **8**', 'Şansı sayın **9**', 'Şansı sayın **10**'];
       var espri = espriler[Math.floor(Math.random() * espriler.length)];
      setTimeout(() => {
-     message.edit(`___${espri}___`);
+     message.edit(`**___${espri}___**`);
 }, 3000)
             
  });
