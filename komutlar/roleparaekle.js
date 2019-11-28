@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 
-exports.run = async (msg, message, args) => {
+module.exports.run = async (msg, message, args) =>  {
   let role = message.mentions.roles.first() || message.guild.roles.find(rol => rol.name === args[0]);
   if(!role){
     return
@@ -27,17 +27,18 @@ exports.run = async (msg, message, args) => {
     message.channel.send(embed);
     return;
   }
-  message.guild.members.roles.has(role.id).forEach(u => {
-     await db.add(`para_${message.guild.id}_${u.id}`, +miktar);
-    });
-  const embed = new Discord.RichEmbed()
+    const dembed = new Discord.RichEmbed()
       .setDescription("Belirtilen miktardaki para eklendi!")
       .setColor("BLACK");
-    message.channel.send(embed);
+  message.guild.members.forEach(u => {
+    if(!u.roles.has(role.id)) return
+    await db.add(`para_${message.guild.id}_${u.id}`, +miktar);
+    });
+
 
 };
 
-exports.conf = {
+module.exports.conf = {
   enabled: true,
   guildOnly: true,
   aliases: ["paraekle"],
@@ -45,7 +46,7 @@ exports.conf = {
   kategori: "puan"
 };
 
-exports.help = {
+module.exports.help = {
   name: "para-ekle",
   description: "PARA",
   usage: "para-ekle"
