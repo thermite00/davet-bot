@@ -7,7 +7,7 @@ exports.run = async (client, message, args, tools) => {
   const embed = new Discord.RichEmbed()
       .setDescription(`Komutlar hakkında bilgi almak için; ${prefix}yardım <Komut Adı>\n(Örnek: ${prefix}yardım davet-kanal)`)
   .addField(`Davetler`, `\`davet-ekle\`, \`davet-sıfırla\`, \`davet-sil\`, \`davet-stokla\``)
-  .addField(`Rütbeler`, `ÇOK YAKINDA!`)
+  .addField(`Rütbeler`, `\`ÇOK YAKINDA! (v0.2)\``)
       .setColor("BLACK");
     message.channel.send(embed);
 }
