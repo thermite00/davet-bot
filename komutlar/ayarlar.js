@@ -1,17 +1,27 @@
 const Discord = require("discord.js");
+const db = require("quick.db")
 module.exports.run = async (bot, message) => {
-
+let prefix = "!";
+  let kanal = await db.fetch(`davetkanal_${message.guild.id}`) || "Ayarlanmamış!"
 		var page = 1;
 		var totalpages = 4;
 		var embed = new Discord.RichEmbed()
-			.setTitle("Davet Yöneticisi Ayarları")
-			.addField(`Bot Ayarları`, `prefix ve dil gibi ayarları düzenlersiniz.`)
+			.setTitle("Davet Yöneticisi - Ayarları")
+			.addField(`1. Prefix`, `\`prefix\``)
+    .addField(`2. Dil`, `\`tr (Yakında dil seçenekleri eklenecek!)\``)
+    .addField(`3. Davet Log Kanalı`, `<#${kanal}>`)
 			
 			.setFooter(`Sayfa ${page}/${totalpages}`)
 			.setColor('BLACK');
 		message.channel.send(embed).then(async function (sentEmbed) {
+	
 			const emojiArray = ["◀", "▶"];
-			
+			const filter = (reaction, user) => emojiArray.includes(reaction.emoji.name) && user.id === message.author.id;
+			await sentEmbed.react(emojiArray[0]).catch(function () { });
+			await sentEmbed.react(emojiArray[1]).catch(function () { });
+			var reactions = sentEmbed.createReactionCollector(filter, {
+				time: 300000
+			});
 			reactions.on("collect", async function (reaction) {
 				await reaction.remove(message.author);
 				if (reaction.emoji.name === "◀") {
@@ -27,12 +37,14 @@ module.exports.run = async (bot, message) => {
 						page = 1;
 					}
 				}
-				embed = new Discord.RichEmbed()
-					.setTitle("Konya Bot - Sunucuya Eklenen Emojiler")
-					.setDescription(` Emoji Adı:[ :${emojis[page - 1].name}: ]`)
-					.setImage(emojis[page - 1].url)
-					.setFooter(`Sayfa ${page}/${totalpages} | Emoji ID: ${emojis[page - 1].id}`)
-					.setColor('RANDOM');
+var embed = new Discord.RichEmbed()
+			.setTitle("Davet Yöneticisi - Ayarları")
+			.addField(`1. Prefix`, `\`prefix\``)
+    .addField(`2. Dil`, `\`tr (Yakında dil seçenekleri eklenecek!)\``)
+    .addField(`3. Davet Log Kanalı`, `<#${kanal}>`)
+			
+			.setFooter(`Sayfa ${page}/${totalpages}`)
+			.setColor('BLACK');
 				sentEmbed.edit(embed).catch(function () { });
 			});
 			reactions.on("end", () => sentEmbed.edit("Etkileşimli komut sona erdi: 5 dakika geçti."));
@@ -57,8 +69,7 @@ module.exports.conf = {
 };
 
 module.exports.help = {
-  name: 'emoji',
-  kategori: "genel",
+  name: 'test',
   description: 'Sayfalı emojiler',
   usage: 'emoji'
 };
