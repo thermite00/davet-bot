@@ -6,7 +6,7 @@ exports.run = async (client, message, args, tools) => {
   let prefix = await db.fetch(`prefix_${message.guild.id}`) || "!"
   const embed = new Discord.RichEmbed()
       .setDescription(`Komutlar hakkında bilgi almak için; ${prefix}yardım <Komut Adı>\n(Örnek: ${prefix}yardım davet-kanal)`)
-  .addField(`Davetler`, `\`davet-ekle\``)
+  .addField(`Davetler`, `\`davet-ekle\`, \`davet-sıfırla\``)
       .setColor("BLACK");
     message.channel.send(embed);
 }

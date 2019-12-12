@@ -38,6 +38,6 @@ module.exports.conf = {
 
 module.exports.help = {
   name: "davet-kanal",
-  description: "Etiketlenen şahsa etiketlenen rolü alırsınız.",
-  usage: "oto-rol"
+  description: "davet-kanal",
+  usage: "davet-kanal"
 };

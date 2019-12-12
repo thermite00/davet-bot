@@ -20,7 +20,7 @@ let m = args.slice(1).join(" ")
         .setColor("BLACK")
     );
   }
-    if (!u) {
+    if (!m) {
     return message.channel.send(
       new Discord.RichEmbed()
         .setDescription("Lütfen eklenecek davet sayısını giriniz.")
@@ -29,14 +29,14 @@ let m = args.slice(1).join(" ")
   }
   const embed = new Discord.RichEmbed()
     .setColor("BLACK")
-    .setDescription(`${u}; ${kanal} olarak ayarlandı!`);
+    .setDescription(`${u} Adlı şahsa; ${m} davet eklendi!`);
   message.channel.send(embed);
 
-  db.set(`davetkanal_${message.guild.id}`, kanal.id);
+  db.add(`davet_${message.author.id}_${message.guild.id}`, +m);
 };
 
 module.exports.conf = {
-  aliases: ["davetkanal"],
+  aliases: ["davetekle"],
   permLevel: 2,
   enabled: true,
   guildOnly: true,
@@ -44,7 +44,7 @@ module.exports.conf = {
 };
 
 module.exports.help = {
-  name: "davet-kanal",
-  description: "Etiketlenen şahsa etiketlenen rolü alırsınız.",
-  usage: "oto-rol"
+  name: "davet-ekle",
+  description: "davet-ekle",
+  usage: "davet-ekle"
 };
