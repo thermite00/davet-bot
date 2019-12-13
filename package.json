@@ -10,16 +10,16 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "discord.js": "^11.5.1",
     "fs": "^0.0.2",
     "quick.db": "^6.3.2",
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
     "moment": "^2.24.0",
     "util": "^0.12.1",
     "http": "^0.0.0",
     "parse-ms": "^2.0.0",
-    "discord-anti-spam": "^2.0.3",
+    "discord-anti-spam": "^2.1.1",
     "common-tags": "^1.8.0",
     "crypto": "^1.0.1",
     "node-superfetch": "^0.1.9",
@@ -29,7 +29,7 @@
     "cpu-stats": "^1.0.0",
     "moment-duration-format": "^2.2.2",
     "cpu-stat": "^2.0.1",
-    "jimp": "^0.8.5",
+    "jimp": "^0.9.1",
     "figlet": "^1.2.4"
   },
   "engines": {

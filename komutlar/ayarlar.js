@@ -4,7 +4,7 @@ module.exports.run = async (bot, message) => {
 let prefix = "!";
   let kanal = await db.fetch(`davetkanal_${message.guild.id}`) || "Ayarlanmamış!"
 		var page = 1;
-		var totalpages = 4;
+		var totalpages = 2;
 		var embed = new Discord.RichEmbed()
 			.setTitle("Davet Yöneticisi - Ayarları")
 			.addField(`1. Prefix`, `\`prefix\``)
@@ -37,6 +37,7 @@ let prefix = "!";
 						page = 1;
 					}
 				}
+        if(page == 2){
 var embed = new Discord.RichEmbed()
 			.setTitle("Davet Yöneticisi - Ayarları")
 			.addField(`1. Prefix`, `\`prefix\``)
@@ -45,11 +46,13 @@ var embed = new Discord.RichEmbed()
 			
 			.setFooter(`Sayfa ${page}/${totalpages}`)
 			.setColor('BLACK');
-				sentEmbed.edit(embed).catch(function () { });
+          sentEmbed.edit(embed).catch(function () { });
+        }
+				
 			});
 			reactions.on("end", () => sentEmbed.edit("Etkileşimli komut sona erdi: 5 dakika geçti."));
 		}).catch(() => {
-			message.reply("Bu embed'i göndermeye çalışırken bir hata oluştu.").catch(() => {
+			message.reply("Bir hata var!").catch(() => {
 				message.author.send(`Komut zaten çalışmakta ${message.channel}`).catch(function () { });
 			});
 		});
@@ -69,7 +72,7 @@ module.exports.conf = {
 };
 
 module.exports.help = {
-  name: 'test',
+  name: 'bot-ayarlar',
   description: 'Sayfalı emojiler',
   usage: 'emoji'
 };
