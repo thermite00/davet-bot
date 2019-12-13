@@ -4,7 +4,7 @@ module.exports.run = async (client, message) => {
   
   const embed = new Discord.RichEmbed()
     .setColor("BLACK")
-    .addField(`Botu Ekleyin!`, `http://bit.ly/35kPoCr`)
+    .addField(`Ping`, client.ping+"ms")
 .setFooter(client.user.username, client.user.avatarURL)
 
   message.channel.send(embed);
@@ -13,13 +13,13 @@ module.exports.run = async (client, message) => {
 module.exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['destek'],
+  aliases: [],
   permLevel: 0,
   kategori: "sunucu"
 };
 
 module.exports.help = {
-  name: "destek-sunucu",
-  description: "destek-sunucu",
-  usage: "destek-sunucu"
+  name: "ping",
+  description: "ping",
+  usage: "ping"
 };
