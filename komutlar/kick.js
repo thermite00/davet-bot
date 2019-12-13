@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
   if (!u) {
     return message.channel.send(
       new Discord.RichEmbed()
-        .setDescription("Lütfen sunucudan yasaklanacak kişiyi etiketleyiniz!")
+        .setDescription("Lütfen atılacak kişiyi etiketleyiniz!")
         .setColor("BLACK")
         .setFooter(bot.user.username, bot.user.avatarURL)
     );
@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
 
   const embed = new Discord.RichEmbed()
     .setColor("BLACK")
-    .setDescription(`${u} Adlı şahsın yasaklanmasını onaylıyor musunuz?`)
+    .setDescription(`${u} Adlı şahsın sunucudan atılmasını onaylıyor musunuz?`)
     .setFooter(bot.user.username, bot.user.avatarURL);
   message.channel.send(embed).then(async function(sentEmbed) {
     const emojiArray = ["✅"];
@@ -37,10 +37,10 @@ module.exports.run = async (bot, message, args) => {
     reactions.on("collect", async function(reaction) {
       if (reaction.emoji.name === "✅") {
         message.channel.send(
-          `İşlem onaylandı! ${u} adlı şahıs sunucudan yasaklandı!`
+          `İşlem onaylandı! ${u} adlı şahıs sunucudan atıldı!`
         );
 
-        message.guild.ban(u, 2);
+        message.guild.member(u).kick();
       }
     });
   });
@@ -55,7 +55,7 @@ module.exports.conf = {
 };
 
 module.exports.help = {
-  name: "ban",
-  description: "ban",
-  usage: "ban"
+  name: "kick",
+  description: "kick",
+  usage: "kick"
 };
