@@ -4,7 +4,7 @@ var http = require("http");
 
 http
   .createServer(function(req, res) {
-    res.write("Ehü Ehü");
+    res.write("sa");
     res.end();
   })
   .listen(8080);
