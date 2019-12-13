@@ -5,7 +5,8 @@ module.exports.run = async (bot, message, args) => {
 
   const embed = new Discord.RichEmbed()
     .setColor("BLACK")
-    .setDescription(`Davetleriniz stoklandı!`);
+    .setDescription(`Davetleriniz stoklandı!`)
+  .setFooter(bot.user.username, bot.user.avatarURL)
   message.channel.send(embed);
 
 };

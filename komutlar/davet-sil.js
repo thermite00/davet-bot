@@ -5,8 +5,8 @@ module.exports.run = async (bot, message, args) => {
   if (!message.member.hasPermission("KICK_MEMBERS")) {
     const embed = new Discord.RichEmbed()
       .setDescription("```Ne yazık ki bu komutu kullanmaya yetkin yok.```")
-      .setColor("BLACK");
-
+      .setColor("BLACK")
+.setFooter(bot.user.username, bot.user.avatarURL)
     message.channel.send(embed);
     return;
   }
@@ -18,6 +18,7 @@ let m = args.slice(1).join(" ")
       new Discord.RichEmbed()
         .setDescription("Lütfen daveti silinecek kişiyi etiketleyiniz!")
         .setColor("BLACK")
+      .setFooter(bot.user.username, bot.user.avatarURL)
     );
   }
     if (!m) {
@@ -25,11 +26,13 @@ let m = args.slice(1).join(" ")
       new Discord.RichEmbed()
         .setDescription("Lütfen silinecek davet sayısını giriniz.")
         .setColor("BLACK")
+      .setFooter(bot.user.username, bot.user.avatarURL)
     );
   }
   const embed = new Discord.RichEmbed()
     .setColor("BLACK")
-    .setDescription(`${u} Adlı şahstan; ${m} davet silindi!`);
+    .setDescription(`${u} Adlı şahstan; ${m} davet silindi!`)
+  .setFooter(bot.user.username, bot.user.avatarURL)
   message.channel.send(embed);
 
   db.add(`davet_${message.author.id}_${message.guild.id}`, -m);

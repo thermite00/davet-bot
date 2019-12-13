@@ -4,7 +4,7 @@ module.exports.run = async (client, message) => {
   
   const embed = new Discord.RichEmbed()
     .setColor("BLACK")
-    .addField(`Yapımcı(lar)`, `<@404206792005124096>`)
+    .addField(`Botu Ekleyin!`, `http://bit.ly/35kPoCr`)
 .setFooter(client.user.username, client.user.avatarURL)
 
   message.channel.send(embed);
@@ -19,7 +19,7 @@ module.exports.conf = {
 };
 
 module.exports.help = {
-  name: "yapımcılar",
-  description: "yapımcılar",
-  usage: "yapımcılar"
+  name: "davet",
+  description: "davet",
+  usage: "davet"
 };

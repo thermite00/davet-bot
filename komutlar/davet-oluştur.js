@@ -1,6 +1,6 @@
 const Discord = require(`discord.js`)
 
-exports.run = async (client, message, args) => {
+exports.run = async (bot, message, args) => {
   try {
     let invite = await message.channel.createInvite({
       maxAge: args.age * 60,
@@ -10,6 +10,7 @@ exports.run = async (client, message, args) => {
     .setColor("BLACK")
     .setTimestamp()
         .setDescription(`Davet kodu oluşturuldu! (https://discord.gg/${invite.code})`)
+      .setFooter(bot.user.username, bot.user.avatarURL)
     return message.channel.sendEmbed(sunucubilgi).catch(e => {
 return
     });
