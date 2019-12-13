@@ -5,6 +5,7 @@ let prefix = "!";
   let kanal = await db.fetch(`davetkanal_${message.guild.id}`) || "Ayarlanmamış!"
 		var page = 1;
 		var totalpages = 2;
+  
 		var embed = new Discord.RichEmbed()
 			.setTitle("Davet Yöneticisi - Ayarları")
 			.addField(`1. Prefix`, `\`prefix\``)
@@ -66,7 +67,7 @@ module.exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 0,
+  permLevel: 4,
       kategori: "sunucu",
 
 };
