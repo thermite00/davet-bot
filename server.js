@@ -114,6 +114,7 @@ client.on("guildMemberRemove", async member => {
   if (!kanal) return;
 
   let d = await db.fetch(`bunudavet_${member.id}`);
+  const sa = client.users.get(d);
   db.add(`davet_${d}_${member.guild.id}`, -1);
 
   if (!d) {
@@ -128,7 +129,7 @@ client.on("guildMemberRemove", async member => {
     const aa = new Discord.RichEmbed()
       .setColor(0x36393e)
       .setDescription(
-        `\`\`${member.user.tag}\`\` **adlı şahıs aramızdan ayrıldı.\nŞahsı davet eden:** \`\`<@${d}>\`\``
+        `\`\`${member.user.tag}\`\` **adlı şahıs aramızdan ayrıldı.\nŞahsı davet eden:** \`\`${sa.tag}\`\``
       );
     client.channels.get(kanal).send(aa);
     return;
@@ -146,40 +147,13 @@ client.on("guildMemberAdd", async member => {
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
 
     const davetçi = client.users.get(invite.inviter.id);
-    const kurulus = new Date().getTime() - member.createdAt.getTime();
-    const gün = moment(kurulus).format("D");
-    const gün2 = moment.utc(kurulus).format("D");
-    let ofa = gün;
-    if (!ofa) var ofa2 = gün2;
-    if (gün2 < 7) {
-      db.add(`davetfake_${invite.inviter.id}_${member.guild.id}`, +1);
-      db.set(`bunudavet_${member.id}`, invite.inviter.id);
-      let sayı4 = await db.fetch(
-        `davet_${invite.inviter.id}_${member.guild.id}`
-      );
-      let sayı5 = await db.fetch(
-        `davetfake_${invite.inviter.id}_${member.guild.id}`
-      );
-      const aa = new Discord.RichEmbed()
-        .setColor(0x36393e)
-        .setDescription(
-          `\`\`${
-            member.user.tag
-          }\`\` **adlı şahıs sunucuya katıldı.\nŞahsı davet eden:** \`\`${
-            davetçi.tag
-          }\`\`\n**Toplam \`\`${sayı4 + sayı5}\`\` daveti oldu!**`
-        );
-      client.channels.get(kanal).send(aa);
-      return;
-    } else {
+
       db.add(`davet_${invite.inviter.id}_${member.guild.id}`, +1);
       db.set(`bunudavet_${member.id}`, invite.inviter.id);
       let sayı = await db.fetch(
         `davet_${invite.inviter.id}_${member.guild.id}`
       );
-      let sayı8 = await db.fetch(
-        `davetfake_${invite.inviter.id}_${member.guild.id}`
-      );
+
       let sayı2;
       if (!sayı) {
         sayı2 = 0;
@@ -194,10 +168,12 @@ client.on("guildMemberAdd", async member => {
             member.user.tag
           }\`\` **adlı şahıs sunucuya katıldı.\nŞahsı davet eden:** \`\`${
             davetçi.tag
-          }\`\`\n**Toplam \`\`${sayı2 + sayı8}\`\` daveti oldu!**`
+          }\`\`\n**Toplam \`\`${sayı2}\`\` daveti oldu!**`
         );
       client.channels.get(kanal).send(aa);
-    }
+      return
+    
+    
   });
 });
 

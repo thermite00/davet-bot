@@ -13,7 +13,7 @@ let bilgi = await db.fetch(`davet_${message.author.id}_${message.guild.id}`);
       sayı2 = await db.fetch(`davet_${message.author.id}_${message.guild.id}`);
     }
   const embed = new Discord.RichEmbed()
-      .setDescription(`Total Davet: ${sayı2}`)
+      .addField(`Total Davet:`, sayı2)
       .setColor("BLACK");
     message.channel.send(embed);
 }
