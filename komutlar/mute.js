@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
     }
   }
   //end of create role
-  let mutetime = args
+  let mutetime = args.slice(1)
     .join(" ")
     .replace(`sn`, `s`)
     .replace(`dk`, `m`)
