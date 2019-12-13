@@ -13,13 +13,13 @@ module.exports.run = async (client, message) => {
 module.exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['destek'],
+  aliases: [],
   permLevel: 0,
   kategori: "sunucu"
 };
 
 module.exports.help = {
-  name: "destek-sunucu",
-  description: "destek-sunucu",
-  usage: "destek-sunucu"
+  name: "davet",
+  description: "davet",
+  usage: "davet"
 };
