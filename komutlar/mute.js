@@ -46,13 +46,15 @@ module.exports.run = async (bot, message, args) => {
   }
   //end of create role
   let mutetime = args[1]
+    .join(" ")
     .replace(`sn`, `s`)
     .replace(`dk`, `m`)
     .replace(`sa`, `h`)
     .replace(`g`, `d`)
     .replace(`saniye`, `s`)
     .replace(`dakika`, `m`)
-    .replace(`saat`, `h`);
+    .replace(`saat`, `h`)
+    .replace(`gün`, `d`);
   if (!mutetime) {
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")

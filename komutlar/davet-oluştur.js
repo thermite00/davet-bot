@@ -22,7 +22,7 @@ return
 
 exports.conf = {
   enabled: true,
-  guildOnly: false,
+  guildOnly: true,
   aliases: ['davetoluştur'],
   permLevel: 0
 };

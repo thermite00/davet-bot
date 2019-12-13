@@ -30,7 +30,8 @@
     "moment-duration-format": "^2.2.2",
     "cpu-stat": "^2.0.1",
     "jimp": "^0.9.1",
-    "figlet": "^1.2.4"
+    "figlet": "^1.2.4",
+    "ms": "^2.1.2"
   },
   "engines": {
     "node": "8.x"
