@@ -148,32 +148,24 @@ client.on("guildMemberAdd", async member => {
 
     const davetçi = client.users.get(invite.inviter.id);
 
-      db.add(`davet_${invite.inviter.id}_${member.guild.id}`, +1);
-      db.set(`bunudavet_${member.id}`, invite.inviter.id);
-      let sayı = await db.fetch(
-        `davet_${invite.inviter.id}_${member.guild.id}`
+    db.add(`davet_${invite.inviter.id}_${member.guild.id}`, +1);
+    db.set(`bunudavet_${member.id}`, invite.inviter.id);
+    let sayı = await db.fetch(`davet_${invite.inviter.id}_${member.guild.id}`);
+
+    let sayı2;
+    if (!sayı) {
+      sayı2 = 0;
+    } else {
+      sayı2 = await db.fetch(`davet_${invite.inviter.id}_${member.guild.id}`);
+    }
+
+    const aa = new Discord.RichEmbed()
+      .setColor(0x36393e)
+      .setDescription(
+        `\`\`${member.user.tag}\`\` **adlı şahıs sunucuya katıldı.\nŞahsı davet eden:** \`\`${davetçi.tag}\`\`\n**Toplam \`\`${sayı2}\`\` daveti oldu!**`
       );
-
-      let sayı2;
-      if (!sayı) {
-        sayı2 = 0;
-      } else {
-        sayı2 = await db.fetch(`davet_${invite.inviter.id}_${member.guild.id}`);
-      }
-
-      const aa = new Discord.RichEmbed()
-        .setColor(0x36393e)
-        .setDescription(
-          `\`\`${
-            member.user.tag
-          }\`\` **adlı şahıs sunucuya katıldı.\nŞahsı davet eden:** \`\`${
-            davetçi.tag
-          }\`\`\n**Toplam \`\`${sayı2}\`\` daveti oldu!**`
-        );
-      client.channels.get(kanal).send(aa);
-      return
-    
-    
+    client.channels.get(kanal).send(aa);
+    return;
   });
 });
 
