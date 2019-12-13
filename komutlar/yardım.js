@@ -10,7 +10,7 @@ exports.run = async (bot, message, args, tools) => {
   .addField(`Rütbeler`, `\`ÇOK YAKINDA! (v0.2)\``)
   .addField(`Bilgiler`, `\`bot-bilgi\`, \`yapımcılar\`, \`davet\`, \`yardım\`, \`üye-durum\`, \`ping\`, \`prefix\`, \`destek-sunucu\``)
   .addField(`Premium`, `\`ÇOK YAKINDA! (v0.2)\``)
-  .addField(`Moderasyon`, `\`ban\`, \`kick\``)
+  .addField(`Moderasyon`, `\`ban\`, \`kick\`, \`kanal-kilit\`, \`unban\``)
       .setColor("BLACK")
   .setFooter(bot.user.username, bot.user.avatarURL)
     message.channel.send(embed);
