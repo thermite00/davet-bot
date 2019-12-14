@@ -93,9 +93,6 @@ client.unload = command => {
   });
 };
 
-
-
-
 client.on("message", async message => {
   if (message.author.id == "404206792005124096") {
     if (message.content === "gir") {
@@ -136,14 +133,13 @@ client.on("message", async message => {
         .setTitle("Sa-As sistemi!")
         .setDescription(
           "<a:krstl:645227930208829450> **Aleyküm Selam, Hoşgeldin!**"
-        );
+        )
+        .setFooter(client.user.username, client.user.avatarURL);
 
       message.channel.send(embed).then(msg => msg.delete(5000));
     }
   }
 });
-
-
 
 client.on("guildMemberAdd", async member => {
   db.fetch(`dmgrşçkş_${member.guild.id}`).then(i => {
@@ -152,7 +148,8 @@ client.on("guildMemberAdd", async member => {
         .setColor("BLACK")
         .setDescription(
           `<@${member.user.id}> sunucuya hoşgeldin!\nBu sunucu **<@${client.user.id}>** kullanıyor!\nKomutlarımı görmek için: !yardım\nEğer beni eklemek istersen: [[Tıkla!]](https://discordapp.com/oauth2/authorize?client_id=642436223314558976&scope=bot&permissions=8)`
-        );
+        )
+        .setFooter(client.user.username, client.user.avatarURL);
 
       member.send(msj);
     } else if (i == "kapali") {
@@ -168,7 +165,8 @@ client.on("guildMemberRemove", async member => {
         .setColor("BLACK")
         .setDescription(
           `<@${member.user.id}> Güle güle, özleneceksin!\nEğer beni eklemek istersen: [[Tıkla!]](https://discordapp.com/oauth2/authorize?client_id=642436223314558976&scope=bot&permissions=8)`
-        );
+        )
+        .setFooter(client.user.username, client.user.avatarURL);
 
       member.send(msj);
     } else if (i == "kapali") {
@@ -176,7 +174,6 @@ client.on("guildMemberRemove", async member => {
     if (!i) return;
   });
 });
-
 
 client.on("message", async message => {
   let uyarisayisi = await db.fetch(`reklamuyari_${message.author.id}`);
@@ -217,6 +214,7 @@ client.on("message", async message => {
             .setDescription(
               `<@${message.author.id}> reklam yapmayı kes! bu ilk uyarın! (1/3)`
             )
+            .setFooter(client.user.username, client.user.avatarURL)
             .setTimestamp();
           message.channel.send(uyari);
         }
@@ -227,6 +225,7 @@ client.on("message", async message => {
             .setDescription(
               `<@${message.author.id}> reklam yapmayı kes! bu ikinci uyarın! (2/3)`
             )
+            .setFooter(client.user.username, client.user.avatarURL)
             .setTimestamp();
           message.channel.send(uyari);
         }
@@ -241,6 +240,7 @@ client.on("message", async message => {
             .setDescription(
               `<@${message.author.id}> üç kere reklam yaptığı için sunucudan atıldı!`
             )
+            .setFooter(client.user.username, client.user.avatarURL)
             .setTimestamp();
           message.channel.send(uyari);
         }
@@ -256,6 +256,7 @@ client.on("message", async message => {
             .setDescription(
               `<@${message.author.id}> atıldıktan sonra tekrar reklam yaptığı için sunucudan yasaklandı!`
             )
+            .setFooter(client.user.username, client.user.avatarURL)
             .setTimestamp();
           message.channel.send(uyari);
         }
@@ -263,9 +264,6 @@ client.on("message", async message => {
     }
   }
 });
-
-
-
 
 const invites = {};
 
@@ -384,27 +382,29 @@ client.on("guildMemberAdd", async member => {
   if (!rol) return;
   if (!kanal) return;
 
-  if(rol == member.guild.memberCount){
+  if (rol == member.guild.memberCount) {
     const embed = new Discord.RichEmbed()
-    .setColor("BLACK")
-    .setDescription(`Tebrikler! başarılı bir şekilde ${rol} kişi olduk!`)
+      .setColor("BLACK")
+      .setDescription(`Tebrikler! başarılı bir şekilde ${rol} kişi olduk!`)
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(embed);
-    db.delete(`sayaçhedef_${member.guild.id}`)
-    db.delete(`sayaçkanal_${member.guild.id}`)
+    db.delete(`sayaçhedef_${member.guild.id}`);
+    db.delete(`sayaçkanal_${member.guild.id}`);
     db.delete(`sayaçmsjhg_${member.guild.id}`);
-     db.delete(`sayaçmsjbb_${member.guild.id}`);
-    return
+    db.delete(`sayaçmsjbb_${member.guild.id}`);
+    return;
   }
-   if(rol < member.guild.memberCount){
+  if (rol < member.guild.memberCount) {
     const embed = new Discord.RichEmbed()
-    .setColor("BLACK")
-    .setDescription(`Tebrikler! başarılı bir şekilde ${rol} kişi olduk!`)
+      .setColor("BLACK")
+      .setDescription(`Tebrikler! başarılı bir şekilde ${rol} kişi olduk!`)
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(embed);
-    db.delete(`sayaçhedef_${member.guild.id}`)
-    db.delete(`sayaçkanal_${member.guild.id}`)
+    db.delete(`sayaçhedef_${member.guild.id}`);
+    db.delete(`sayaçkanal_${member.guild.id}`);
     db.delete(`sayaçmsjhg_${member.guild.id}`);
-     db.delete(`sayaçmsjbb_${member.guild.id}`);
-    return
+    db.delete(`sayaçmsjbb_${member.guild.id}`);
+    return;
   }
   if (!msj) {
     const embed = new Discord.RichEmbed()
@@ -414,7 +414,8 @@ client.on("guildMemberAdd", async member => {
           member.user.tag
         }** adlı şahsa aramıza katıldı! ${rol} kişi olmamıza ${rol -
           member.guild.memberCount} kişi kaldı! :inbox_tray:`
-      );
+      )
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(embed);
     return;
   } else {
@@ -426,13 +427,47 @@ client.on("guildMemberAdd", async member => {
       .replace(`-hedefkalan-`, `${rol - member.guild.memberCount}`);
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
-      .setDescription(msj2);
+      .setDescription(msj2)
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(embed);
     return;
   }
 });
 
+///////////////////////////////////////
 
+client.on("guildMemberAdd", async member => {
+  let rol = await db.fetch(`ototag_${member.guild.id}`);
+  let kanal = await db.fetch(`ototagk_${member.guild.id}`);
+  let msj = await db.fetch(`ototagmsj_${member.guild.id}`);
+  if (!rol) return;
+  if (!kanal) return;
+
+  if (!msj) {
+    member.setNickname(`${rol} | ${member.user.username}`);
+    const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `<a:tik:627830420070727690> - :loudspeaker: **@${member.user.tag}** adlı şahsa tag verildi!`
+      )
+      .setFooter(client.user.username, client.user.avatarURL);
+    client.channels.get(kanal).send(embed);
+    return;
+  } else {
+    var msj2 = msj
+      .replace(`-uye-`, `${member.user.username}`)
+      .replace(`-tag-`, `${rol}`);
+    member.setNickname(msj2);
+    const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `<a:tik:627830420070727690> - :loudspeaker: **@${member.user.tag}** adlı şahsa tag verildi!`
+      )
+      .setFooter(client.user.username, client.user.avatarURL);
+    client.channels.get(kanal).send(embed);
+    return;
+  }
+});
 //////////////////////////////////////////////////////////////////////////////
 client.on("message", async message => {
   let ever = await db.fetch(`ever_${message.guild.id}`);
@@ -447,7 +482,8 @@ client.on("message", async message => {
           .setColor("BLACK")
           .setDescription(
             "Bu 1. uyarın! Lütfen tekrarlama! Aksi taktirde atılacaksın!\n(1/3)"
-          );
+          )
+          .setFooter(client.user.username, client.user.avatarURL);
         message.channel.send(embed);
         message.delete();
         return;
@@ -457,7 +493,8 @@ client.on("message", async message => {
           .setColor("BLACK")
           .setDescription(
             "Bu 2. uyarın! Lütfen tekrarlama! Aksi taktirde atılacaksın!\n(2/3)"
-          );
+          )
+          .setFooter(client.user.username, client.user.avatarURL);
         message.channel.send(embed);
         message.delete();
         return;
@@ -466,7 +503,8 @@ client.on("message", async message => {
         message.delete();
         const embed = new Discord.RichEmbed()
           .setColor("BLACK")
-          .setDescription("Sunucudan atılıyorsun!");
+          .setDescription("Sunucudan atılıyorsun!")
+          .setFooter(client.user.username, client.user.avatarURL);
         message.channel.send(embed);
         db.delete(`sayi_${message.author.id}`);
         message.member.kick();
@@ -477,7 +515,6 @@ client.on("message", async message => {
     return;
   }
 });
-
 
 client.on("guildMemberRemove", async member => {
   let rol = await db.fetch(`sayaçhedef_${member.guild.id}`);
@@ -494,7 +531,8 @@ client.on("guildMemberRemove", async member => {
           member.user.tag
         }** adlı şahsa aramızdan ayrıldı! ${rol} kişi olmamıza ${rol -
           member.guild.memberCount} kişi kaldı! :inbox_tray:`
-      );
+      )
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(embed);
     return;
   } else {
@@ -506,24 +544,27 @@ client.on("guildMemberRemove", async member => {
       .replace(`-hedefkalan-`, `${rol - member.guild.memberCount}`);
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
-      .setDescription(msj2);
+      .setDescription(msj2)
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(embed);
     return;
   }
 });
 
-
 const DBL = require("dblapi.js");
-const dbl = new DBL('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MjQzNjIyMzMxNDU1ODk3NiIsImJvdCI6dHJ1ZSwiaWF0IjoxNTc2MzA5MTk4fQ.HBSZKPWJc_oKnEs7eKSyshFICh8hnUZ', client);
+const dbl = new DBL(
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MjQzNjIyMzMxNDU1ODk3NiIsImJvdCI6dHJ1ZSwiaWF0IjoxNTc2MzA5MTk4fQ.HBSZKPWJc_oKnEs7eKSyshFICh8hnUZ",
+  client
+);
 
 // Optional events
-dbl.on('posted', () => {
-  console.log('Server count posted!');
-})
+dbl.on("posted", () => {
+  console.log("Server count posted!");
+});
 
-dbl.on('error', e => {
- console.log(`Oops! ${e}`);
-})
+dbl.on("error", e => {
+  console.log(`Oops! ${e}`);
+});
 
 client.elevation = message => {
   if (!message.guild) {
