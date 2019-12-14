@@ -566,6 +566,43 @@ dbl.on("error", e => {
   console.log(`Oops! ${e}`);
 });
 
+
+
+
+
+
+
+
+
+
+
+
+client.on("guildCreate", async guild => {
+  const embed = new Discord.RichEmbed()
+    .setColor(`GREEN`)
+    .setTitle(`EKLENDİM!`)
+    .setDescription(
+      `Sunucu Adı: ${guild.name}\nSunucu Id: ${guild.id}\nSunucu Sahibi: ${guild.owner}\nSunucudaki Kişi Sayısı: ${guild.memberCount}\nSunucu Oluşturulma Zamanı: ${guild.createdAt}\nDoğrulama Seviyesi: ${guild.verificationLevel}`
+    );
+  client.channels.get(`655384931538829322`).send(embed);
+});
+client.on("guildRemove", async guild => {
+  const embed = new Discord.RichEmbed()
+    .setColor(`RED`)
+    .setTitle(`ATILDIM!`)
+    .setDescription(
+      `Sunucu Adı: ${guild.name}\nSunucu Id: ${guild.id}\nSunucu Sahibi: ${guild.owner}\nSunucudaki Kişi Sayısı: ${guild.memberCount}\nSunucu Oluşturulma Zamanı: ${guild.createdAt}\nDoğrulama Seviyesi: ${guild.verificationLevel}`
+    );
+  client.channels.get(`655384931538829322`).send(embed);
+});
+
+
+
+
+
+
+
+
 client.elevation = message => {
   if (!message.guild) {
     return;
