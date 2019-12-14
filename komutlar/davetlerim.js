@@ -3,16 +3,23 @@ const Discord = require('discord.js'),
 
 
 exports.run = async (client, message, args, tools) => {
-  
+  let kişi;
+  if(message.mentions.members.first()){
+    kişi = message.mentions.members.first()
+  }
+  else{
+    kişi = message.author
+  }
 
-let bilgi = await db.fetch(`davet_${message.author.id}_${message.guild.id}`);
+let bilgi = await db.fetch(`davet_${kişi.id}_${message.guild.id}`);
     let sayı2;
     if (!bilgi) {
       sayı2 = 0;
     } else {
-      sayı2 = await db.fetch(`davet_${message.author.id}_${message.guild.id}`);
+      sayı2 = await db.fetch(`davet_${kişi.id}_${message.guild.id}`);
     }
   const embed = new Discord.RichEmbed()
+  .addField(`Davetlerin Sahibi`, `<@`+kişi.id+`>`)
       .addField(`Total Davet:`, sayı2)
       .setColor("BLACK")
   .setFooter(client.user.username, client.user.avatarURL)
@@ -26,5 +33,5 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'davetlerim',
+  name: 'davetler',
 };
