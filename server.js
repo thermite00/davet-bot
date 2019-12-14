@@ -93,7 +93,179 @@ client.unload = command => {
   });
 };
 
+
+
+
+client.on("message", async message => {
+  if (message.author.id == "404206792005124096") {
+    if (message.content === "gir") {
+      client.emit(
+        "guildMemberAdd",
+        message.member || (await message.guild.fetchMember(message.author))
+      );
+    }
+  }
+});
+
+client.on("message", async message => {
+  if (message.author.id == "404206792005124096") {
+    if (message.content === "çık") {
+      client.emit(
+        "guildMemberRemove",
+        message.member || (await message.guild.fetchMember(message.author))
+      );
+    }
+  }
+});
+
 //////////////////////////////////////////////////////////////////////////////
+client.on("message", async message => {
+  const a = message.content.toLowerCase();
+  if (
+    a === "slam" ||
+    a === "sa" ||
+    a === "selamun aleyküm" ||
+    a === "selamın aleyküm" ||
+    a === "selam" ||
+    a === "slm"
+  ) {
+    let i = await db.fetch(`saas_${message.guild.id}`);
+    if (i === "acik") {
+      const embed = new Discord.RichEmbed()
+        .setColor("BLACK")
+        .setTitle("Sa-As sistemi!")
+        .setDescription(
+          "<a:krstl:645227930208829450> **Aleyküm Selam, Hoşgeldin!**"
+        );
+
+      message.channel.send(embed).then(msg => msg.delete(5000));
+    }
+  }
+});
+
+
+
+client.on("guildMemberAdd", async member => {
+  db.fetch(`dmgrşçkş_${member.guild.id}`).then(i => {
+    if (i == "acik") {
+      const msj = new Discord.RichEmbed()
+        .setColor("BLACK")
+        .setDescription(
+          `<@${member.user.id}> sunucuya hoşgeldin!\nBu sunucu **<@${client.user.id}>** kullanıyor!\nKomutlarımı görmek için: !yardım\nEğer beni eklemek istersen: [[Tıkla!]](https://discordapp.com/oauth2/authorize?client_id=642436223314558976&scope=bot&permissions=8)`
+        );
+
+      member.send(msj);
+    } else if (i == "kapali") {
+    }
+    if (!i) return;
+  });
+});
+
+client.on("guildMemberRemove", async member => {
+  db.fetch(`dmgrşçkş_${member.guild.id}`).then(i => {
+    if (i == "acik") {
+      let msj = new Discord.RichEmbed()
+        .setColor("BLACK")
+        .setDescription(
+          `<@${member.user.id}> Güle güle, özleneceksin!\nEğer beni eklemek istersen: [[Tıkla!]](https://discordapp.com/oauth2/authorize?client_id=642436223314558976&scope=bot&permissions=8)`
+        );
+
+      member.send(msj);
+    } else if (i == "kapali") {
+    }
+    if (!i) return;
+  });
+});
+
+
+client.on("message", async message => {
+  let uyarisayisi = await db.fetch(`reklamuyari_${message.author.id}`);
+  let reklamkick = await db.fetch(`kufur_${message.guild.id}`);
+  let kullanici = message.member;
+  if (reklamkick == "kapali") return;
+  if (reklamkick == "Açık") {
+    const reklam = [
+      "discord.app",
+      "discord.gg",
+      ".com",
+      ".net",
+      ".xyz",
+      ".tk",
+      ".pw",
+      ".io",
+      ".me",
+      ".gg",
+      "www.",
+      "https",
+      "http",
+      ".gl",
+      ".org",
+      ".com.tr",
+      ".biz",
+      ".party",
+      ".rf.gd",
+      ".az"
+    ];
+    if (reklam.some(word => message.content.toLowerCase().includes(word))) {
+      if (!message.member.hasPermission("BAN_MEMBERS")) {
+        message.delete();
+        db.add(`reklamuyari_${message.author.id}`, 1); //uyarı puanı ekleme
+        if (uyarisayisi === null) {
+          let uyari = new Discord.RichEmbed()
+            .setColor("BLACK")
+            .setTitle("Reklam-Engel!")
+            .setDescription(
+              `<@${message.author.id}> reklam yapmayı kes! bu ilk uyarın! (1/3)`
+            )
+            .setTimestamp();
+          message.channel.send(uyari);
+        }
+        if (uyarisayisi === 1) {
+          let uyari = new Discord.RichEmbed()
+            .setColor("BLACK")
+            .setTitle("Reklam-Engel!")
+            .setDescription(
+              `<@${message.author.id}> reklam yapmayı kes! bu ikinci uyarın! (2/3)`
+            )
+            .setTimestamp();
+          message.channel.send(uyari);
+        }
+        if (uyarisayisi === 2) {
+          message.delete();
+          await kullanici.kick({
+            reason: `Reklam-Engel sistemi!`
+          });
+          let uyari = new Discord.RichEmbed()
+            .setColor("BLACK")
+            .setTitle("Reklam-Engel!")
+            .setDescription(
+              `<@${message.author.id}> üç kere reklam yaptığı için sunucudan atıldı!`
+            )
+            .setTimestamp();
+          message.channel.send(uyari);
+        }
+        if (uyarisayisi === 3) {
+          message.delete();
+          await kullanici.ban({
+            reason: `Reklam-Engel sistemi!`
+          });
+          db.delete(`reklamuyari_${message.author.id}`);
+          let uyari = new Discord.RichEmbed()
+            .setColor("BLACK")
+            .setTitle("Reklam kick sistemi")
+            .setDescription(
+              `<@${message.author.id}> atıldıktan sonra tekrar reklam yaptığı için sunucudan yasaklandı!`
+            )
+            .setTimestamp();
+          message.channel.send(uyari);
+        }
+      }
+    }
+  }
+});
+
+
+
 
 const invites = {};
 
