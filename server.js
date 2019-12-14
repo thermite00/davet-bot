@@ -205,7 +205,140 @@ client.on("guildMemberAdd", async member => {
 });
 //////////////////////////////////////////////////////////////////////////////
 
+client.on("guildMemberAdd", async member => {
+  let rol = await db.fetch(`sayaçhedef_${member.guild.id}`);
+  let kanal = await db.fetch(`sayaçkanal_${member.guild.id}`);
+  let msj = await db.fetch(`sayaçmsjhg_${member.guild.id}`);
+  if (!rol) return;
+  if (!kanal) return;
 
+  if(rol == member.guild.memberCount){
+    const embed = new Discord.RichEmbed()
+    .setColor("BLACK")
+    .setDescription(`Tebrikler! başarılı bir şekilde ${rol} kişi olduk!`)
+    client.channels.get(kanal).send(embed);
+    db.delete(`sayaçhedef_${member.guild.id}`)
+    db.delete(`sayaçkanal_${member.guild.id}`)
+    db.delete(`sayaçmsjhg_${member.guild.id}`);
+     db.delete(`sayaçmsjbb_${member.guild.id}`);
+    return
+  }
+   if(rol < member.guild.memberCount){
+    const embed = new Discord.RichEmbed()
+    .setColor("BLACK")
+    .setDescription(`Tebrikler! başarılı bir şekilde ${rol} kişi olduk!`)
+    client.channels.get(kanal).send(embed);
+    db.delete(`sayaçhedef_${member.guild.id}`)
+    db.delete(`sayaçkanal_${member.guild.id}`)
+    db.delete(`sayaçmsjhg_${member.guild.id}`);
+     db.delete(`sayaçmsjbb_${member.guild.id}`);
+    return
+  }
+  if (!msj) {
+    const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `<a:tik:627830420070727690> - :loudspeaker: **@${
+          member.user.tag
+        }** adlı şahsa aramıza katıldı! ${rol} kişi olmamıza ${rol -
+          member.guild.memberCount} kişi kaldı! :inbox_tray:`
+      );
+    client.channels.get(kanal).send(embed);
+    return;
+  } else {
+    var msj2 = msj
+      .replace(`-sunucu-`, `${member.guild.name}`)
+      .replace(`-uye-`, `${member.user.tag}`)
+      .replace(`-uyetag-`, `<@${member.user.id}>`)
+      .replace(`-hedef-`, `${rol}`)
+      .replace(`-hedefkalan-`, `${rol - member.guild.memberCount}`);
+    const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(msj2);
+    client.channels.get(kanal).send(embed);
+    return;
+  }
+});
+
+
+//////////////////////////////////////////////////////////////////////////////
+client.on("message", async message => {
+  let ever = await db.fetch(`ever_${message.guild.id}`);
+  let sayı = await db.fetch(`sayi_${message.author.id}`);
+  if (ever === "acik") {
+    const a = message.content;
+    if (a === "@everyone" || a === "@here") {
+      if (message.member.hasPermission("BAN_MEMBERS")) return;
+      db.add(`sayi_${message.author.id}`, 1);
+      if (sayı == null) {
+        const embed = new Discord.RichEmbed()
+          .setColor("BLACK")
+          .setDescription(
+            "Bu 1. uyarın! Lütfen tekrarlama! Aksi taktirde atılacaksın!\n(1/3)"
+          );
+        message.channel.send(embed);
+        message.delete();
+        return;
+      }
+      if (sayı === 1) {
+        const embed = new Discord.RichEmbed()
+          .setColor("BLACK")
+          .setDescription(
+            "Bu 2. uyarın! Lütfen tekrarlama! Aksi taktirde atılacaksın!\n(2/3)"
+          );
+        message.channel.send(embed);
+        message.delete();
+        return;
+      }
+      if (sayı > 2) {
+        message.delete();
+        const embed = new Discord.RichEmbed()
+          .setColor("BLACK")
+          .setDescription("Sunucudan atılıyorsun!");
+        message.channel.send(embed);
+        db.delete(`sayi_${message.author.id}`);
+        message.member.kick();
+        return;
+      }
+    }
+  } else {
+    return;
+  }
+});
+
+
+client.on("guildMemberRemove", async member => {
+  let rol = await db.fetch(`sayaçhedef_${member.guild.id}`);
+  let kanal = await db.fetch(`sayaçkanal_${member.guild.id}`);
+  let msj = await db.fetch(`sayaçmsjbb_${member.guild.id}`);
+  if (!rol) return;
+  if (!kanal) return;
+
+  if (!msj) {
+    const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `<a:tik:627830420070727690> - :loudspeaker: **@${
+          member.user.tag
+        }** adlı şahsa aramızdan ayrıldı! ${rol} kişi olmamıza ${rol -
+          member.guild.memberCount} kişi kaldı! :inbox_tray:`
+      );
+    client.channels.get(kanal).send(embed);
+    return;
+  } else {
+    var msj2 = msj
+      .replace(`-sunucu-`, `${member.guild.name}`)
+      .replace(`-uye-`, `${member.user.tag}`)
+      .replace(`-uyetag-`, `<@${member.user.id}>`)
+      .replace(`-hedef-`, `${rol}`)
+      .replace(`-hedefkalan-`, `${rol - member.guild.memberCount}`);
+    const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(msj2);
+    client.channels.get(kanal).send(embed);
+    return;
+  }
+});
 
 
 const DBL = require("dblapi.js");
