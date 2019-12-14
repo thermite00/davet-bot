@@ -119,18 +119,20 @@ client.on("guildMemberRemove", async member => {
 
   if (!d) {
     const aa = new Discord.RichEmbed()
-      .setColor(0x36393e)
+      .setColor("BLACK")
       .setDescription(
         `\`\`${member.user.tag}\`\` **adlı şahıs aramızdan ayrıldı.\nŞahsı davet eden:** \`\`Bulunamadı!\`\``
-      );
+      )
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(aa);
     return;
   } else {
     const aa = new Discord.RichEmbed()
-      .setColor(0x36393e)
+      .setColor("BLACK")
       .setDescription(
         `\`\`${member.user.tag}\`\` **adlı şahıs aramızdan ayrıldı.\nŞahsı davet eden:** \`\`${sa.tag}\`\``
-      );
+      )
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(aa);
     return;
   }
@@ -160,10 +162,11 @@ client.on("guildMemberAdd", async member => {
     }
 
     const aa = new Discord.RichEmbed()
-      .setColor(0x36393e)
+      .setColor("BLACK")
       .setDescription(
         `\`\`${member.user.tag}\`\` **adlı şahıs sunucuya katıldı.\nŞahsı davet eden:** \`\`${davetçi.tag}\`\`\n**Toplam \`\`${sayı2}\`\` daveti oldu!**`
-      );
+      )
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(aa);
     return;
   });
@@ -182,7 +185,8 @@ client.on("guildMemberAdd", async member => {
       .setColor("BLACK")
       .setDescription(
         `<a:tik:627830420070727690> - :loudspeaker: **@${member.user.tag}** adlı şahsa rolü verildi! :inbox_tray:`
-      );
+      )
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(embed);
     return;
   } else {
@@ -193,7 +197,8 @@ client.on("guildMemberAdd", async member => {
       .replace(`-rol-`, `${member.guild.roles.get(rol).name}`);
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
-      .setDescription(msj2);
+      .setDescription(msj2)
+      .setFooter(client.user.username, client.user.avatarURL);
     client.channels.get(kanal).send(embed);
     return;
   }
