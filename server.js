@@ -168,7 +168,36 @@ client.on("guildMemberAdd", async member => {
     return;
   });
 });
+//////////////////////////////////////////////////////////////////////////////
+client.on("guildMemberAdd", async member => {
+  let rol = await db.fetch(`otorol_${member.guild.id}`);
+  let kanal = await db.fetch(`otokanal_${member.guild.id}`);
+  let msj = await db.fetch(`otorolmsj_${member.guild.id}`);
+  if (!rol) return;
+  if (!kanal) return;
 
+  member.addRole(rol);
+  if (!msj) {
+    const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(
+        `<a:tik:627830420070727690> - :loudspeaker: **@${member.user.tag}** adlı şahsa rolü verildi! :inbox_tray:`
+      );
+    client.channels.get(kanal).send(embed);
+    return;
+  } else {
+    var msj2 = msj
+      .replace(`-sunucu-`, `${member.guild.name}`)
+      .replace(`-uye-`, `${member.user.tag}`)
+      .replace(`-uyetag-`, `<@${member.user.id}>`)
+      .replace(`-rol-`, `${member.guild.roles.get(rol).name}`);
+    const embed = new Discord.RichEmbed()
+      .setColor("BLACK")
+      .setDescription(msj2);
+    client.channels.get(kanal).send(embed);
+    return;
+  }
+});
 //////////////////////////////////////////////////////////////////////////////
 client.elevation = message => {
   if (!message.guild) {
