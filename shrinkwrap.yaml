@@ -4,6 +4,7 @@ dependencies:
   cpu-stat: 2.0.1
   cpu-stats: 1.0.0
   crypto: 1.0.1
+  dblapi.js: 2.3.0
   discord-anti-spam: 2.1.1
   discord.js: 11.5.1
   express: 4.17.1
@@ -680,6 +681,10 @@ packages:
       node: '>=0.10'
     resolution:
       integrity: sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
+  /dblapi.js/2.3.0:
+    dev: false
+    resolution:
+      integrity: sha512-8uZQMBg1coJsL5SEN1oPj2dgjgfm0DW7FhP8XWnG2V/xcOJnQNM2kCId1g/pyqm8PYH9346olL1IrLJQ6m0wOg==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -1916,6 +1921,7 @@ specifiers:
   cpu-stat: ^2.0.1
   cpu-stats: ^1.0.0
   crypto: ^1.0.1
+  dblapi.js: ^2.3.0
   discord-anti-spam: ^2.1.1
   discord.js: ^11.5.1
   express: ^4.17.1
