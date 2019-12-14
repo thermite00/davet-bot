@@ -8,9 +8,10 @@ exports.run = async (bot, message, args, tools) => {
       .setDescription(`Bot sürümü; **v0.1**, Prefix: **${prefix}**, Dil: **tr**`)
   .addField(`Davetler`, `\`davet-ekle\`, \`davet-sıfırla\`, \`davet-sil\`, \`davet-stokla\`,\`davetlerim\``)
   .addField(`Rütbeler`, `\`ÇOK YAKINDA! (v0.2)\``)
-  .addField(`Bilgiler`, `\`bot-bilgi\`, \`yapımcılar\`, \`davet\`, \`yardım\`, \`üye-durum\`, \`ping\`, \`prefix\`, \`destek-sunucu\``)
+  .addField(`Bot`, `\`bot-bilgi\`, \`yapımcılar\`, \`davet\`, \`yardım\`, \`üye-durum\`, \`ping\`, \`prefix\`, \`destek-sunucu\``)
   .addField(`Premium`, `\`ÇOK YAKINDA! (v0.2)\``)
   .addField(`Moderasyon`, `\`ban\`, \`kick\`, \`kanal-kilit\`, \`unban\`, \`mute\`, \`takma-ad\`, \`rol-al\`, \`rol-ver\`, \`reklam-taraması\`, \`slowmode\``)
+  .addField(`Sistem`, `\`otorol\`, \`otorol-sıfırla\`, \`otorol-mesaj\`, \`otorol-mesaj-sıfırla\``)
       .setColor("BLACK")
   .setFooter(bot.user.username, bot.user.avatarURL)
     message.channel.send(embed);
