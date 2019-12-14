@@ -19,8 +19,8 @@ let bilgi = await db.fetch(`davet_${kişi.id}_${message.guild.id}`);
       sayı2 = await db.fetch(`davet_${kişi.id}_${message.guild.id}`);
     }
   const embed = new Discord.RichEmbed()
-  .addField(`Davetlerin Sahibi`, `<@`+kişi.id+`>`)
-      .addField(`Total Davet:`, sayı2)
+  .addField(`Davetlerin Sahibi`, `<@`+kişi.id+`>`, true)
+      .addField(`Total Davet:`, sayı2, true)
       .setColor("BLACK")
   .setFooter(client.user.username, client.user.avatarURL)
     message.channel.send(embed);
@@ -28,7 +28,7 @@ let bilgi = await db.fetch(`davet_${kişi.id}_${message.guild.id}`);
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ['davetk'],
+  aliases: ['davetk', 'davetlerim'],
   permLevel: 0
 };
 
