@@ -21,6 +21,7 @@ module.exports.run = async (bot, message) => {
     .addField(`Bu Sunucu Premium Mu?`, `Hayır! (v0.2)`, false)
     .addField(`Destek Sunucusu`, `http://bit.ly/davetyöneticisidestek`, false)
     .addField(`Botu Ekleyin`, `http://bit.ly/davetyöneticisiekle`, false)
+  .addField(`Bota Oy Verin`, `http://bit.ly/davetyöneticisioy`, false)
     .setFooter(bot.user.username, bot.user.avatarURL);
   message.channel.send(embed);
 };
