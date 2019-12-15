@@ -586,7 +586,7 @@ client.on("guildCreate", async guild => {
     );
   client.channels.get(`655384931538829322`).send(embed);
 });
-client.on("guildRemove", async guild => {
+client.on("guildDelete", async guild => {
   const embed = new Discord.RichEmbed()
     .setColor(`RED`)
     .setTitle(`ATILDIM!`)
