@@ -9,7 +9,7 @@ exports.run = async (bot, message, args, tools) => {
   .addField(`Davetler`, `\`davet-kanal\`, \`davet-kanal-sıfırla\`, \`davet-ekle\`, \`davet-sıfırla\`, \`davet-sil\`, \`davet-stokla\`, \`davetlerim\`, \`davet-oluştur\``)
   .addField(`Rütbeler`, `\`ÇOK YAKINDA! (v0.2)\``)
   .addField(`Bot`, `\`bot-bilgi\`, \`yapımcılar\`, \`davet\`, \`yardım\`, \`üye-durum\`, \`ping\`, \`prefix\`, \`prefix-sıfırla\`, \`destek-sunucu\``)
-  .addField(`Premium`, `\`pre-günlük\`, \`pre-puan\``)
+  .addField(`Premium`, `\`pre-günlük\`, \`pre-puan\`, \`pre-market\``)
   .addField(`Moderasyon`, `\`ban\`, \`kick\`, \`kanal-kilit\`, \`unban\`, \`mute\`, \`takma-ad\`, \`rol-al\`, \`rol-ver\`, \`reklam-taraması\`, \`slowmode\`, \`temizle\``)
   .addField(`Sistem`, `\`otorol\`, \`otorol-sıfırla\`, \`otorol-mesaj\`, \`otorol-mesaj-sıfırla\`, \`sayaç\`, \`sayaç-sıfırla\`, \`sayaç-mesaj-hg\`, \`sayaç-mesaj-bb\`, \`sayaç-mesaj-sıfırla\`, \`ever-engel\`, \`sa-as\`, \`reklam-engel\`, \`ototag\`, \`ototag-isim\`, \`ototag-sıfırla\`, \`hg-bb\``)
       .setColor("BLACK")
