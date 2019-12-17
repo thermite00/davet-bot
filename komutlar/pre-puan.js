@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const db = require("quick.db");
 
-exports.run = async (msg, message, args) => {
+exports.run = async (client, message, args) => {
   let kişi;
   if (!message.mentions.users.first()) {
     kişi = message.author;
