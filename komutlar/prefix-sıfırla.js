@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
   if (!prefix) {
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
-      .setDescription(`Lütfen bir prefix belirtiniz!`)
+      .setDescription(`Prefix zaten ayarlanmamış!`)
       .setFooter(client.user.username, client.user.avatarURL);
 
     message.channel.send(embed);
@@ -14,11 +14,11 @@ module.exports.run = async (client, message, args) => {
   }
   const embed = new Discord.RichEmbed()
       .setColor("BLACK")
-      .setDescription(`Prefix; \`${prefix}\` olarak ayarlandı!`)
+      .setDescription(`Prefix başarıyla sıfırlandı!`)
       .setFooter(client.user.username, client.user.avatarURL);
 
     message.channel.send(embed);
-  db.set(`prefix_${message.guild.id}`, prefix)
+  db.delete(`prefix_${message.guild.id}`)
 };
 
 module.exports.conf = {
@@ -30,7 +30,7 @@ module.exports.conf = {
 };
 
 module.exports.help = {
-  name: "prefix",
-  description: "prefix",
-  usage: "prefix"
+  name: "prefix-sıfırla",
+  description: "prefix-sıfırla",
+  usage: "prefix-sıfırla"
 };
