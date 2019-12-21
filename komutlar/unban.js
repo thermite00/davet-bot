@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
     return;
   }
 
-  let u = message.mentions.users.first();
+  let u = args[0]
   if (!u) {
     return message.channel.send(
       new Discord.RichEmbed()
