@@ -12,6 +12,7 @@ exports.run = async (bot, message, args, tools) => {
   .addField(`Premium`, `\`pre-günlük\`, \`pre-puan\`, \`pre-market\``)
   .addField(`Moderasyon`, `\`ban\`, \`kick\`, \`kanal-kilit\`, \`unban\`, \`mute\`, \`takma-ad\`, \`rol-al\`, \`rol-ver\`, \`reklam-taraması\`, \`slowmode\`, \`temizle\``)
   .addField(`Sistem`, `\`otorol\`, \`otorol-sıfırla\`, \`otorol-mesaj\`, \`otorol-mesaj-sıfırla\`, \`sayaç\`, \`sayaç-sıfırla\`, \`sayaç-mesaj-hg\`, \`sayaç-mesaj-bb\`, \`sayaç-mesaj-sıfırla\`, \`ever-engel\`, \`sa-as\`, \`reklam-engel\`, \`ototag\`, \`ototag-isim\`, \`ototag-sıfırla\`, \`hg-bb\``)
+  .addField(`Müzik`, `\`çal\`, \`geç\`, \`durdur\`, \`devam\`, \`liste\`, \`ses\``)
       .setColor("BLACK")
   .setFooter(bot.user.username, bot.user.avatarURL)
     message.channel.send(embed);
