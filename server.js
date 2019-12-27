@@ -180,8 +180,9 @@ const YouTube = require("simple-youtube-api");
 const queue = new Map();
 const youtube = new YouTube(GOOGLE_API_KEY);
 const ytdl = require("ytdl-core");
-let prefix = "k!";
+
 client.on("message", async msg => {
+  let prefix = await db.fetch(`prefix_${msg.guild.id}`) || "!";
   if (msg.author.bot) return undefined;
   if (!msg.content.startsWith(prefix)) return undefined;
 
@@ -286,7 +287,7 @@ ${videos.map(video2 => `[**${++index}**] **${video2.title}**`).join("\n")}`
           console.error(err);
           return msg.channel.send(
             new Discord.RichEmbed()
-              .setColor("0x36393E")
+              .setColor("RED")
               .setDescription("Hiçbir sonuç bulunamadı!")
           );
         }

@@ -34,7 +34,8 @@
     "ms": "^2.1.2",
     "dblapi.js": "^2.3.0",
     "ytdl-core": "^1.0.4",
-    "simple-youtube-api": "^5.2.1"
+    "simple-youtube-api": "^5.2.1",
+    "node-opus": "^0.3.2"
   },
   "engines": {
     "node": "8.x"
