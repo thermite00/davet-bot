@@ -521,7 +521,7 @@ client.on("message", async message => {
   let uyarisayisi = await db.fetch(`reklamuyari_${message.author.id}`);
   let reklamkick = await db.fetch(`kufur_${message.guild.id}`);
   let kullanici = message.member;
-  if (reklamkick == "kapali") return;
+  if (!reklamkick) return;
   if (reklamkick == "Açık") {
     const reklam = [
       "discord.app",
