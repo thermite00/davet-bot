@@ -8,7 +8,7 @@ module.exports.run = async (bot, message) => {
     .format("D [gün], H [saat], m [dakika], s [saniye]");
   const embed = new Discord.RichEmbed()
     .setColor("BLACK")
-    .addField(`Versiyon`, `0.1`, true)
+    .addField(`Versiyon`, `0.2`, true)
     .addField(`Aktiflik Süresi`, duration, true)
     .addField(`Sunucular`, bot.guilds.size.toLocaleString(), true)
     .addField(`Kullanıcılar`, bot.users.size.toLocaleString(), true)
