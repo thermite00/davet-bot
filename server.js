@@ -116,6 +116,43 @@ client.on("message", async message => {
 });
 
 //////////////////////////////////////////////////////////////////////////////
+client.on("roleDelete", async role => {
+  let kanal = await db.fetch(`rolk_${role.guild.id}`);
+  if (!kanal) return;
+  const entry = await role.guild
+    .fetchAuditLogs({ type: "ROLE_DELETE" })
+    .then(audit => audit.entries.first());
+  if (entry.executor.id == "642436223314558976") return;
+  if (entry.executor.hasPermission("ADMINISTRATOR")) return;
+  role.guild.createRole({
+    name: role.name,
+    color: role.hexColor,
+    permissions: role.permissions
+  });
+
+  const embed = new Discord.RichEmbed()
+    .setTitle(`Bir rol silindi!`)
+    .addField(`Silen`, entry.executor.tag)
+    .addField(`Silinen Rol`, role.name);
+  client.channels.get(kanal).send(embed);
+});
+
+client.on("roleCreate", async role => {
+  let kanal = await db.fetch(`rolk_${role.guild.id}`);
+  if (!kanal) return;
+  const entry = await role.guild
+    .fetchAuditLogs({ type: "ROLE_CREATE" })
+    .then(audit => audit.entries.first());
+  if (entry.executor.id == "642436223314558976") return;
+  if (entry.executor.hasPermission("ADMINISTRATOR")) return;
+  role.delete();
+  const embed = new Discord.RichEmbed()
+    .setTitle(`Bir rol açıldı!`)
+    .addField(`Açan`, entry.executor.tag)
+    .addField(`Açılan Rol`, role.name);
+  client.channels.get(kanal).send(embed);
+});
+//////////////////////////////////////////////////////////////////////////////
 client.on("message", async message => {
   const a = message.content.toLowerCase();
   if (
@@ -182,7 +219,7 @@ const youtube = new YouTube(GOOGLE_API_KEY);
 const ytdl = require("ytdl-core");
 
 client.on("message", async msg => {
-  let prefix = await db.fetch(`prefix_${msg.guild.id}`) || "!";
+  let prefix = (await db.fetch(`prefix_${msg.guild.id}`)) || "!";
   if (msg.author.bot) return undefined;
   if (!msg.content.startsWith(prefix)) return undefined;
 
