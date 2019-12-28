@@ -115,6 +115,18 @@ client.on("message", async message => {
   }
 });
 
+client.on("ready", () => {
+  setInterval(() => {
+    let botdurum = client.channels.find(c => c.id === "657226299496202269");
+    const botistatistik = new Discord.RichEmbed()
+      .setColor("GREEN")
+      .addField(`Sunucular`, `${client.guilds.size.toLocaleString()}`)
+      .addField(`Kullanıcılar`, client.users.size.toLocaleString())
+      .addField(`Ping`, `${client.ping}`)
+      .setTimestamp();
+    botdurum.send(botistatistik);
+  }, 30000);
+});
 //////////////////////////////////////////////////////////////////////////////
 client.on("roleDelete", async role => {
   let kanal = await db.fetch(`rolk_${role.guild.id}`);
