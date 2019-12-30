@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
   } else {
     botcuk = botcuk3;
   }
-  if (!botcuk) return message.channel.send("Lütfen bir bot adı giriniz.");
+  if (!args[0]) return message.channel.send("Lütfen bir bot adı giriniz.");
   if (!botcuk.bot) return message.channel.send("Böyle bir bot yok.");
   dbl.getBot(botcuk.id).then(async bot => {
     const embed = new Discord.RichEmbed()
