@@ -18,7 +18,7 @@ module.exports.run = async (bot, message) => {
     .addField(`Versiyon`, `0.2`, true)
     .addField(`Aktiflik Süresi`, duration, true)
     .addField(`Sunucular`, bot.guilds.size.toLocaleString(), true)
-    .addField(`Kullanıcılar`, bot.users.size.toLocaleString(), true)
+    .addField(`Kullanıcılar`, bot.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString(), true)
     .addField(`Ping`, bot.ping + "ms", true)
     .addField(
       `Ram Kullanımı`,

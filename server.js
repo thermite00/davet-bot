@@ -121,7 +121,7 @@ client.on("ready", () => {
     const botistatistik = new Discord.RichEmbed()
       .setColor("GREEN")
       .addField(`Sunucular`, `${client.guilds.size.toLocaleString()}`)
-      .addField(`Kullanıcılar`, client.users.size.toLocaleString())
+      .addField(`Kullanıcılar`, client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString())
       .addField(`Ping`, `${client.ping}`)
       .setTimestamp();
     botdurum.send(botistatistik);
