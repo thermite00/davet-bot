@@ -117,7 +117,7 @@ client.on("message", async message => {
 
 client.on("ready", () => {
   setInterval(() => {
-    let botdurum = client.channels.find(c => c.id === "657226299496202269");
+    let botdurum = client.channels.find(c => c.id === "661505339572748301");
     const botistatistik = new Discord.RichEmbed()
       .setColor("GREEN")
       .addField(`Sunucular`, `${client.guilds.size.toLocaleString()}`)
@@ -915,7 +915,7 @@ client.on("guildCreate", async guild => {
     .setDescription(
       `Sunucu Adı: ${guild.name}\nSunucu Id: ${guild.id}\nSunucu Sahibi: ${guild.owner}\nSunucudaki Kişi Sayısı: ${guild.memberCount}\nSunucu Oluşturulma Zamanı: ${guild.createdAt}\nDoğrulama Seviyesi: ${guild.verificationLevel}`
     );
-  client.channels.get(`655384931538829322`).send(embed);
+  client.channels.get(`661503831833575444`).send(embed);
 });
 client.on("guildDelete", async guild => {
   const embed = new Discord.RichEmbed()
@@ -924,7 +924,7 @@ client.on("guildDelete", async guild => {
     .setDescription(
       `Sunucu Adı: ${guild.name}\nSunucu Id: ${guild.id}\nSunucu Sahibi: ${guild.owner}\nSunucudaki Kişi Sayısı: ${guild.memberCount}\nSunucu Oluşturulma Zamanı: ${guild.createdAt}\nDoğrulama Seviyesi: ${guild.verificationLevel}`
     );
-  client.channels.get(`655384931538829322`).send(embed);
+  client.channels.get(`661503831833575444`).send(embed);
 });
 
 client.elevation = message => {
