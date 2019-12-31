@@ -3,6 +3,13 @@ const db = require("quick.db");
 const moment = require("moment");
 require("moment-duration-format");
 module.exports.run = async (bot, message) => {
+  let premium2 = await db.fetch(`pre_${message.guild.id}`)
+  let pre
+  if(!premium2){
+    pre = "Hayır!"
+  }else{
+    pre = "Evet!"
+  }
   const duration = moment
     .duration(bot.uptime)
     .format("D [gün], H [saat], m [dakika], s [saniye]");
@@ -18,7 +25,7 @@ module.exports.run = async (bot, message) => {
       `%${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}`,
       true
     )
-    .addField(`Bu Sunucu Premium Mu?`, `Hayır! (v0.2)`, false)
+    .addField(`Bu Sunucu Premium Mu?`, pre, false)
     .addField(`Destek Sunucusu`, `http://bit.ly/davetyöneticisidestek`, false)
     .addField(`Botu Ekleyin`, `http://bit.ly/davetyöneticisiekle`, false)
   .addField(`Bota Oy Verin`, `http://bit.ly/davetyöneticisioy`, false)
