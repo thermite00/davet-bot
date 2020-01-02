@@ -101,6 +101,8 @@ client.on("message", async message => {
         message.member || (await message.guild.fetchMember(message.author))
       );
     }
+  } else {
+    return;
   }
 });
 
@@ -112,6 +114,8 @@ client.on("message", async message => {
         message.member || (await message.guild.fetchMember(message.author))
       );
     }
+  } else {
+    return;
   }
 });
 
@@ -121,7 +125,10 @@ client.on("ready", () => {
     const botistatistik = new Discord.RichEmbed()
       .setColor("GREEN")
       .addField(`Sunucular`, `${client.guilds.size.toLocaleString()}`)
-      .addField(`Kullanıcılar`, client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString())
+      .addField(
+        `Kullanıcılar`,
+        client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString()
+      )
       .addField(`Ping`, `${client.ping}`)
       .setTimestamp();
     botdurum.send(botistatistik);
@@ -136,9 +143,11 @@ client.on("channelDelete", async channel => {
     .then(audit => audit.entries.first());
   if (entry.executor.id == client.user.id) return;
   if (entry.executor.hasPermission("ADMINISTRATOR")) return;
-  channel.guild.createChannel(channel.name, 'text', [{
-    id: channel.guild.id
-  }]);
+  channel.guild.createChannel(channel.name, "text", [
+    {
+      id: channel.guild.id
+    }
+  ]);
 
   const embed = new Discord.RichEmbed()
     .setTitle(`Bir kanal silindi!`)
@@ -260,8 +269,6 @@ client.on("guildMemberRemove", async member => {
     if (!i) return;
   });
 });
-
-
 
 client.on("message", async message => {
   let uyarisayisi = await db.fetch(`reklamuyari_${message.author.id}`);
