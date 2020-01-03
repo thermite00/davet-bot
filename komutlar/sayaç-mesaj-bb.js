@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
     const embed = new Discord.RichEmbed()
       .setDescription(`Ne yazık ki bu komutu kullanmaya yetkin yok.`)
       .setColor("BLACK")
-      .setFooter(bot.user.username, bot.user.avatarURL)
+      .setFooter(bot.user.username, bot.user.avatarURL);
 
     message.channel.send(embed);
     return;
@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
   const embed = new Discord.RichEmbed()
     .setColor("BLACK")
     .setDescription(`Sayaç Bb mesajı; ${msj} olarak ayarlandı!`)
-    .setFooter(bot.user.username, bot.user.avatarURL)
+    .setFooter(bot.user.username, bot.user.avatarURL);
   message.channel.send(embed);
 
   db.set(`sayaçmsjbb_${message.guild.id}`, msj);
