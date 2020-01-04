@@ -121,7 +121,24 @@ client.on("message", async message => {
 
 client.on("ready", () => {
   setInterval(() => {
-    let botdurum = client.channels.find(c => c.id === "661505339572748301");
+    client.channels
+      .get(`662962152788983808`)
+      .setName(`Sunucular; ${client.guilds.size.toLocaleString()}`);
+    client.channels.get(`662962169809207297`).setName(
+      `Kullanıcılar;
+        ${client.guilds
+          .reduce((a, b) => a + b.memberCount, 0)
+          .toLocaleString()}`
+    );
+    client.channels
+      .get(`662962219021107211`)
+      .setName(`Ping; ${client.ping}ms!`);
+  }, 5000);
+});
+
+client.on("ready", () => {
+  setInterval(() => {
+    let botdurum = client.channels.find(c => c.id === "662963782900908073");
     const botistatistik = new Discord.RichEmbed()
       .setColor("GREEN")
       .addField(`Sunucular`, `${client.guilds.size.toLocaleString()}`)
@@ -705,7 +722,7 @@ client.on("guildCreate", async guild => {
     .setDescription(
       `Sunucu Adı: ${guild.name}\nSunucu Id: ${guild.id}\nSunucu Sahibi: ${guild.owner}\nSunucudaki Kişi Sayısı: ${guild.memberCount}\nSunucu Oluşturulma Zamanı: ${guild.createdAt}\nDoğrulama Seviyesi: ${guild.verificationLevel}`
     );
-  client.channels.get(`661503831833575444`).send(embed);
+  client.channels.get(`662963655075299360`).send(embed);
 });
 client.on("guildDelete", async guild => {
   const embed = new Discord.RichEmbed()
@@ -714,7 +731,7 @@ client.on("guildDelete", async guild => {
     .setDescription(
       `Sunucu Adı: ${guild.name}\nSunucu Id: ${guild.id}\nSunucu Sahibi: ${guild.owner}\nSunucudaki Kişi Sayısı: ${guild.memberCount}\nSunucu Oluşturulma Zamanı: ${guild.createdAt}\nDoğrulama Seviyesi: ${guild.verificationLevel}`
     );
-  client.channels.get(`661503831833575444`).send(embed);
+  client.channels.get(`662963655075299360`).send(embed);
 });
 
 client.elevation = message => {
