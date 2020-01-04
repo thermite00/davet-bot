@@ -1,4 +1,4 @@
-const keep_alive = require("./keep_alive.js"); //index.js Const Kısımlarına
+/*const keep_alive = require("./keep_alive.js"); //index.js Const Kısımlarına
 
 var http = require("http");
 
@@ -7,7 +7,7 @@ http
     res.write("sa");
     res.end();
   })
-  .listen(8080);
+  .listen(8080);*/
 
 ///////////////////////////////////////////////////////////////////////////////
 
