@@ -121,10 +121,7 @@ client.on("message", async message => {
 
 client.on("ready", () => {
   setInterval(() => {
-    client.shard.fetchClientValues("guilds.size").then(results => {
-      console.log(
-        ` total guilds`
-      );
+   
 
       client.channels
         .get(`662962152788983808`)
@@ -140,7 +137,6 @@ client.on("ready", () => {
         .setName(`Ping; ${client.ping}ms!`);
     }, 5000);
   });
-});
 
 client.on("ready", () => {
   setInterval(() => {
