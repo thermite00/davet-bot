@@ -121,19 +121,25 @@ client.on("message", async message => {
 
 client.on("ready", () => {
   setInterval(() => {
-    client.channels
-      .get(`662962152788983808`)
-      .setName(`Sunucular; ${client.guilds.size.toLocaleString()}`);
-    client.channels.get(`662962169809207297`).setName(
-      `Kullanıcılar;
+    client.shard.fetchClientValues("guilds.size").then(results => {
+      console.log(
+        ` total guilds`
+      );
+
+      client.channels
+        .get(`662962152788983808`)
+        .setName(`Sunucular; ${client.guilds.size.toLocaleString()}`);
+      client.channels.get(`662962169809207297`).setName(
+        `Kullanıcılar;
         ${client.guilds
           .reduce((a, b) => a + b.memberCount, 0)
           .toLocaleString()}`
-    );
-    client.channels
-      .get(`662962219021107211`)
-      .setName(`Ping; ${client.ping}ms!`);
-  }, 5000);
+      );
+      client.channels
+        .get(`662962219021107211`)
+        .setName(`Ping; ${client.ping}ms!`);
+    }, 5000);
+  });
 });
 
 client.on("ready", () => {
