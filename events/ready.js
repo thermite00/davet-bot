@@ -5,11 +5,7 @@ const ayarlar = require("../ayarlar.json");
 var prefix = ayarlar.prefix;
 
 module.exports = async client => {
-  let shard = client.shard.id
-  if(shard == 0){
-    shard = 1
-  }
-  var oyun = ["Davet Community®", "Versiyon v0.2", "Rol Koruma Sistemi!", `Shard: ${client.shard.id}/${client.shard.count}`]
+  var oyun = ["Davet Community®", "Versiyon v0.2", "Rol Koruma Sistemi!"];
 
   setInterval(async () => {
     var random = Math.floor(Math.random() * (oyun.length - 0 + 1) + 0);
