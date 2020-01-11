@@ -107,7 +107,7 @@ client.on("message", async message => {
 });
 
 client.on("message", async message => {
-  if (message.author.id == "658691037614833684") {
+  if (message.author.id == "665575396405673984") {
     if (message.content === "çık") {
       client.emit(
         "guildMemberRemove",
@@ -119,22 +119,7 @@ client.on("message", async message => {
   }
 });
 
-client.on("ready", () => {
-  setInterval(() => {
-    client.channels
-      .get(`662962152788983808`)
-      .setName(`Sunucular; ${client.guilds.size.toLocaleString()}`);
-    client.channels.get(`662962169809207297`).setName(
-      `Kullanıcılar;
-        ${client.guilds
-          .reduce((a, b) => a + b.memberCount, 0)
-          .toLocaleString()}`
-    );
-    client.channels
-      .get(`662962219021107211`)
-      .setName(`Ping; ${client.ping}ms!`);
-  }, 5000);
-});
+
 
 client.on("ready", () => {
   setInterval(() => {
