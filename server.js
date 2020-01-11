@@ -94,7 +94,7 @@ client.unload = command => {
 };
 
 client.on("message", async message => {
-  if (message.author.id == "404206792005124096") {
+  if (message.author.id == "658691037614833684") {
     if (message.content === "gir") {
       client.emit(
         "guildMemberAdd",
@@ -107,7 +107,7 @@ client.on("message", async message => {
 });
 
 client.on("message", async message => {
-  if (message.author.id == "404206792005124096") {
+  if (message.author.id == "658691037614833684") {
     if (message.content === "çık") {
       client.emit(
         "guildMemberRemove",
