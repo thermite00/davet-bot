@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
     .setDescription(`Davetleriniz stoklandı!`)
   .setFooter(bot.user.username, bot.user.avatarURL)
   message.channel.send(embed);
-
+//HAVASI YOK BUNUN
 };
 
 module.exports.conf = {
