@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
     message.channel.send(embed);
     return;
   }
-  let küfürg = await db.fetch(`dmgrşçkş_${message.guild.id}`);
+  let küfürg = await db.fetch(`dm_${message.guild.id}`);
   if (args[0] == "aç") {
     if (küfürg) {
       const embed = new Discord.RichEmbed()
@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
       message.channel.send(embed);
       return;
     } else {
-      db.set(`dmgrşçkş_${message.guild.id}`, "acik");
+      db.set(`dm_${message.guild.id}`, "acik");
       const embed = new Discord.RichEmbed()
         .setColor("BLACK")
         .setTitle("Hg-Bb sistemi!")
@@ -41,7 +41,7 @@ exports.run = async (client, message, args) => {
       message.channel.send(embed);
     }
   } else if (args[0] == "kapat") {
-    db.delete(`dmgrşçkş_${message.guild.id}`);
+    db.delete(`dm_${message.guild.id}`);
     const embed = new Discord.RichEmbed()
       .setColor("BLACK")
       .setTitle("Hg-Bb sistemi!")
@@ -60,6 +60,6 @@ exports.conf = {
 
 exports.help = {
   name: "hg-bb",
-  description: "Özelden mesajlı hg bb sistemini ayarlarsınız.",
+  description: "saasdasds",
   usage: "hg-bb"
 };

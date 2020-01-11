@@ -197,7 +197,7 @@ client.on("roleDelete", async role => {
   const entry = await role.guild
     .fetchAuditLogs({ type: "ROLE_DELETE" })
     .then(audit => audit.entries.first());
-  if (entry.executor.id == "642436223314558976") return;
+  if (entry.executor.id == client.user.id) return;
   if (entry.executor.hasPermission("ADMINISTRATOR")) return;
   role.guild.createRole({
     name: role.name,
@@ -218,7 +218,7 @@ client.on("roleCreate", async role => {
   const entry = await role.guild
     .fetchAuditLogs({ type: "ROLE_CREATE" })
     .then(audit => audit.entries.first());
-  if (entry.executor.id == "642436223314558976") return;
+  if (entry.executor.id == client.user.id) return;
   if (entry.executor.hasPermission("ADMINISTRATOR")) return;
   role.delete();
   const embed = new Discord.RichEmbed()
@@ -254,7 +254,7 @@ client.on("message", async message => {
 });
 
 client.on("guildMemberAdd", async member => {
-  db.fetch(`dmgrşçkş_${member.guild.id}`).then(i => {
+  db.fetch(`dm_${member.guild.id}`).then(i => {
     if (i == "acik") {
       const msj = new Discord.RichEmbed()
         .setColor("BLACK")
@@ -271,7 +271,7 @@ client.on("guildMemberAdd", async member => {
 });
 
 client.on("guildMemberRemove", async member => {
-  db.fetch(`dmgrşçkş_${member.guild.id}`).then(i => {
+  db.fetch(`dm_${member.guild.id}`).then(i => {
     if (i == "acik") {
       let msj = new Discord.RichEmbed()
         .setColor("BLACK")
@@ -700,20 +700,6 @@ client.on("guildMemberRemove", async member => {
   }
 });
 
-const DBL = require("dblapi.js");
-const dbl = new DBL(
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MjQzNjIyMzMxNDU1ODk3NiIsImJvdCI6dHJ1ZSwiaWF0IjoxNTc2MzIwMDMxfQ.fbbZYB4SuE42yGFuvSASSbiYt6XTYi_VcmmyghLo7Fw",
-  client
-);
-
-// Optional events
-dbl.on("posted", () => {
-  console.log("Server count posted!");
-});
-
-dbl.on("error", e => {
-  console.log(`Oops! ${e}`);
-});
 
 client.on("guildCreate", async guild => {
   const embed = new Discord.RichEmbed()
@@ -757,4 +743,4 @@ client.on("error", e => {
   console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
 });
 
-client.login(ayarlar.token);
+client.login(ayarlar.tosken);
