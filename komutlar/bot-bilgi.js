@@ -25,10 +25,10 @@ module.exports.run = async (bot, message) => {
       `%${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}`,
       true
     )
-    .addField(`Bu Sunucu Premium Mu?`, pre, false)
-    .addField(`Destek Sunucusu`, `http://bit.ly/davetyöneticisidestek`, false)
-    .addField(`Botu Ekleyin`, `http://bit.ly/davetyöneticisiekle`, false)
-  .addField(`Bota Oy Verin`, `http://bit.ly/davetyöneticisioy`, false)
+    .addField(`Bo Hakkında Bilgi?`, pre, false)
+    .addField(`Destek Sunucusu`, `https://discord.gg/UAvzdUP`, false)
+    .addField(`Botu Ekleyin`, `https://discordapp.com/oauth2/authorize?client_id=701339041249099797&scope=bot&permissions=473001199`, false)
+    .addField(`Vote Verin`, `https://top.gg/bot/701339041249099797/vote`, false)
     .setFooter(bot.user.username, bot.user.avatarURL);
   message.channel.send(embed);
 };
