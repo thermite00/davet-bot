@@ -23,7 +23,7 @@ exports.run = async (client, message, args, tools) => {
   if (!veri) {
     const embed = new Discord.RichEmbed()
       .addField(`Davetlerin Sahibi`, `<@` + kişi.id + `>`, true)
-      .addField(`Total Davet:`, sayı2, true)
+      .addField(`Toplam Davet:`, sayı2, true)
       .setColor("BLACK")
       .setFooter(client.user.username, client.user.avatarURL);
     message.channel.send(embed);
@@ -31,7 +31,7 @@ exports.run = async (client, message, args, tools) => {
   if (message.member.roles.has(veri2)) {
     const embed = new Discord.RichEmbed()
       .addField(`Davetlerin Sahibi`, `<@` + kişi.id + `>`, true)
-      .addField(`Total Davet:`, sayı2, true)
+      .addField(`Toplam Davet:`, sayı2, true)
       .setColor("BLACK")
       .setFooter(client.user.username, client.user.avatarURL);
     message.channel.send(embed);
@@ -40,7 +40,7 @@ exports.run = async (client, message, args, tools) => {
   if (!message.member.roles.has(veri)) {
     const embed = new Discord.RichEmbed()
       .addField(`Davetlerin Sahibi`, `<@` + kişi.id + `>`, true)
-      .addField(`Total Davet:`, sayı2, true)
+      .addField(`Toplam Davet:`, sayı2, true)
       .setColor("BLACK")
       .setDescription(
         `${message.guild.roles.get(veri).name} rolü için son ${-sayı2 -
@@ -53,7 +53,7 @@ exports.run = async (client, message, args, tools) => {
     if (!veri2) {
       const embed = new Discord.RichEmbed()
         .addField(`Davetlerin Sahibi`, `<@` + kişi.id + `>`, true)
-        .addField(`Total Davet:`, sayı2, true)
+        .addField(`Toplam Davet:`, sayı2, true)
         .setColor("BLACK")
         .setFooter(client.user.username, client.user.avatarURL);
       message.channel.send(embed);
@@ -62,7 +62,7 @@ exports.run = async (client, message, args, tools) => {
     if (veri2) {
       const embed = new Discord.RichEmbed()
         .addField(`Davetlerin Sahibi`, `<@` + kişi.id + `>`, true)
-        .addField(`Total Davet:`, sayı2, true)
+        .addField(`Toplam Davet:`, sayı2, true)
         .setColor("BLACK")
         .setDescription(
           `${message.guild.roles.get(veri2).name} rolü için son ${-sayı2 -
