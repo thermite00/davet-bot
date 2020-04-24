@@ -140,22 +140,10 @@ client.on("guildMemberRemove", async member => {
   db.add(`davet_${d}_${member.guild.id}`, -1);
 
   if (!d) {
-    const aa = new Discord.RichEmbed()
-      .setColor("BLACK")
-      .setDescription(
-        `\`\`${member.user.tag}\`\` **adlı şahıs aramızdan ayrıldı.\nŞahsı davet eden:** \`\`Bulunamadı!\`\``
-      )
-      .setFooter(client.user.username, client.user.avatarURL);
-    client.channels.get(kanal).send(aa);
+    client.channels.get(kanal).send(`:large_orange_diamond: <@${member.user.id}> Sunucudan Ayrıldı.! Davet Eden Kişi: [ **BULUNAMADI**]`);
     return;
   } else {
-    const aa = new Discord.RichEmbed()
-      .setColor("BLACK")
-      .setDescription(
-        `\`\`${member.user.tag}\`\` **adlı şahıs aramızdan ayrıldı.\nŞahsı davet eden:** \`\`${sa.tag}\`\``
-      )
-      .setFooter(client.user.username, client.user.avatarURL);
-    client.channels.get(kanal).send(aa);
+    client.channels.get(kanal).send(`:large_orange_diamond: <@${member.user.id}> Sunucudan Ayrıldı.! Davet Eden Kişi: [ <@${sa.id}> ]`);
 
     if (!veri) return;
 
@@ -201,14 +189,8 @@ client.on("guildMemberAdd", async member => {
     } else {
       sayı2 = await db.fetch(`davet_${invite.inviter.id}_${member.guild.id}`);
     }
-
-    const aa = new Discord.RichEmbed()
-      .setColor("BLACK")
-      .setDescription(
-        `\`\`${member.user.tag}\`\` **adlı şahıs sunucuya katıldı.\nŞahsı davet eden:** \`\`${davetçi.tag}\`\`\n**Toplam \`\`${sayı2}\`\` daveti oldu!**`
-      )
-      .setFooter(client.user.username, client.user.avatarURL);
-    client.channels.get(kanal).send(aa);
+    
+    client.channels.get(kanal).send(`:large_blue_diamond: <@${member.user.id}> Sunucuya Katıldı.! Davet Eden Kişi: <@${davetçi.id}> [**${sayı2}**]`);
     if (!veri) return;
 
     if (!sasad.roles.has(veri)) {
