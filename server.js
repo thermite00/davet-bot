@@ -140,10 +140,10 @@ client.on("guildMemberRemove", async member => {
   db.add(`davet_${d}_${member.guild.id}`, -1);
 
   if (!d) {
-    client.channels.get(kanal).send(`:large_orange_diamond: <@${member.user.id}> Sunucudan Ayrıldı.! Davet Eden Kişi: [ **BULUNAMADI**]`);
+    client.channels.get(kanal).send(`<a:exit:705381193105014784> <@${member.user.id}> Sunucudan Ayrıldı.! Davet Eden Kişi: [ **BULUNAMADI**]`);
     return;
   } else {
-    client.channels.get(kanal).send(`:large_orange_diamond: <@${member.user.id}> Sunucudan Ayrıldı.! Davet Eden Kişi: [ <@${sa.id}> ]`);
+    client.channels.get(kanal).send(`<a:exit:705381193105014784> <@${member.user.id}> Sunucudan Ayrıldı.! Davet Eden Kişi: [ <@${sa.id}> ]`);
 
     if (!veri) return;
 
@@ -190,7 +190,7 @@ client.on("guildMemberAdd", async member => {
       sayı2 = await db.fetch(`davet_${invite.inviter.id}_${member.guild.id}`);
     }
     
-    client.channels.get(kanal).send(`:large_blue_diamond: <@${member.user.id}> Sunucuya Katıldı.! Davet Eden Kişi: <@${davetçi.id}> [**${sayı2}**]`);
+    client.channels.get(kanal).send(`<a:login:705381166936489997> <@${member.user.id}> Sunucuya Katıldı.! Davet Eden Kişi: <@${davetçi.id}> [**${sayı2}**]`);
     if (!veri) return;
 
     if (!sasad.roles.has(veri)) {
