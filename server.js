@@ -1,13 +1,16 @@
 const keep_alive = require("./keep_alive.js"); //index.js Const Kısımlarına
 
-var http = require("http");
-
-http
-  .createServer(function(req, res) {
-    res.write("sa");
-    res.end();
-  })
-  .listen(8080);
+const express = require('express');
+const app = express();
+const http = require('http');
+    app.get("/", (request, response) => {
+    console.log(`Pinglendi`);
+    response.sendStatus(200);
+    });
+    app.listen(process.env.PORT);
+    setInterval(() => {
+    http.get(`http://davetbotuloz.glitch.me/`);
+    }, 30000);
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -207,6 +210,8 @@ client.on("guildMemberAdd", async member => {
     }
   });
 });
+//////////////////////////////////////////////////////////////////////////////
+//Loz 'Bey//
 //////////////////////////////////////////////////////////////////////////////
 client.elevation = message => {
   if (!message.guild) {
